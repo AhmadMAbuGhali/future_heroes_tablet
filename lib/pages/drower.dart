@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:future_heroes_tablet/pages/CenterEvaluation.dart';
+import 'package:future_heroes_tablet/routes/route_helper.dart';
 import 'package:future_heroes_tablet/widgets/LogoAuth.dart';
+import 'package:get/get.dart';
 
 class DrowerWidget extends StatelessWidget {
   const DrowerWidget({super.key});
@@ -9,7 +12,7 @@ class DrowerWidget extends StatelessWidget {
     return Drawer(
       child: ListView(
         padding: EdgeInsets.zero,
-        children: const [
+        children: [
           DrawerHeader(
             decoration: BoxDecoration(
               color: Colors.white,
@@ -19,6 +22,9 @@ class DrowerWidget extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.home),
             title: Text('الرئيسية'),
+            onTap: () {
+              Get.toNamed(RouteHelper.homePage);
+            },
           ),
           ListTile(
             leading: Icon(Icons.menu_book),
@@ -27,10 +33,16 @@ class DrowerWidget extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.star),
             title: Text('تقييم المدرب'),
+            onTap: () {
+              Get.toNamed(RouteHelper.coachEvaluation);
+            },
           ),
           ListTile(
             leading: Icon(Icons.star),
             title: Text('تقييم الخدمة بشكل كامل'),
+            onTap: () {
+              Get.toNamed(RouteHelper.centerEvaluation);
+            },
           ),
           ListTile(
             leading: Icon(Icons.feedback),

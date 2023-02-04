@@ -23,7 +23,11 @@ class ShortCutWidget2 extends StatelessWidget {
           borderRadius: BorderRadius.circular(8.0),
           border: Border.all(color: ColorManager.gray)),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
+          SizedBox(
+            height: 15.h,
+          ),
           Container(height: 128.h, width: 128.h, child: SvgPicture.asset(img)),
           SizedBox(
             height: 24.h,

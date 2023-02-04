@@ -27,6 +27,10 @@ class _PlusWidgetState extends State<PlusWidget> {
                 color: ColorManager.primary,
                 fontWeight: FontWeight.bold),
           ),
+          SizedBox(
+            height: 80.h,
+            width: 100.w,
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
