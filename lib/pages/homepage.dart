@@ -81,43 +81,43 @@ class HomePage extends StatelessWidget {
                 child: Row(
                   children: [
                     ShortCutWidget2(
+                      text: 'النحت',
+                      img: ImageAssets.sculpting,
+                    ),
+                    SizedBox(
+                      width: 40.w,
+                    ),
+                    ShortCutWidget2(
+                      text: 'الرسم',
+                      img: ImageAssets.sketching,
+                    ),
+                    SizedBox(
+                      width: 40.w,
+                    ),
+                    ShortCutWidget2(
+                      text: 'الخط',
+                      img: ImageAssets.reading,
+                    ),
+                    SizedBox(
+                      width: 40.w,
+                    ),
+                    ShortCutWidget2(
                       text: 'جمباز',
-                      img: ImageAssets.Taekwondo_pictogram,
+                      img: ImageAssets.Gymnastics,
                     ),
                     SizedBox(
                       width: 40.w,
                     ),
                     ShortCutWidget2(
                       text: 'كاراتيه',
-                      img: ImageAssets.Taekwondo_pictogram,
+                      img: ImageAssets.karate,
                     ),
                     SizedBox(
                       width: 40.w,
                     ),
                     ShortCutWidget2(
                       text: 'تايكواندو',
-                      img: ImageAssets.Taekwondo_pictogram,
-                    ),
-                    SizedBox(
-                      width: 40.w,
-                    ),
-                    ShortCutWidget2(
-                      text: 'جمباز',
-                      img: ImageAssets.Taekwondo_pictogram,
-                    ),
-                    SizedBox(
-                      width: 40.w,
-                    ),
-                    ShortCutWidget2(
-                      text: 'كاراتيه',
-                      img: ImageAssets.Taekwondo_pictogram,
-                    ),
-                    SizedBox(
-                      width: 40.w,
-                    ),
-                    ShortCutWidget2(
-                      text: 'تايكواندو',
-                      img: ImageAssets.Taekwondo_pictogram,
+                      img: ImageAssets.Taekwondo,
                     ),
                   ],
                 ),
@@ -132,28 +132,28 @@ class HomePage extends StatelessWidget {
                   children: [
                     ShortCutWidget(
                       text: 'مجلة المركز',
-                      img: ImageAssets.Taekwondo_pictogram,
+                      img: ImageAssets.book,
                     ),
                     SizedBox(
                       width: 16.w,
                     ),
                     ShortCutWidget(
                       text: 'تقييم المدرب',
-                      img: ImageAssets.Taekwondo_pictogram,
+                      img: ImageAssets.review,
                     ),
                     SizedBox(
                       width: 16.w,
                     ),
                     ShortCutWidget(
                       text: 'تقييم المركز',
-                      img: ImageAssets.Taekwondo_pictogram,
+                      img: ImageAssets.reviews,
                     ),
                     SizedBox(
                       width: 16.w,
                     ),
                     ShortCutWidget(
                       text: 'تغذية راجعة',
-                      img: ImageAssets.Taekwondo_pictogram,
+                      img: ImageAssets.feedback,
                     ),
                   ],
                 ),

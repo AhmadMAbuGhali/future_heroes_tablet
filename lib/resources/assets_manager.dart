@@ -3,9 +3,16 @@ const String IMAGE_PATH = 'assets/images';
 class ImageAssets {
   static const String logopng = '$IMAGE_PATH/logo.png';
   static const String logo = '$IMAGE_PATH/logo.svg';
-
-  static const String Taekwondo_pictogram =
-      '$IMAGE_PATH/Taekwondo_pictogram.svg';
+  static const String book = '$IMAGE_PATH/book.svg';
+  static const String feedback = '$IMAGE_PATH/feedback.svg';
+  static const String Gymnastics = '$IMAGE_PATH/Gymnastics.svg';
+  static const String karate = '$IMAGE_PATH/karate.svg';
+  static const String review = '$IMAGE_PATH/review.svg';
+  static const String reviews = '$IMAGE_PATH/reviews.svg';
+  static const String Taekwondo = '$IMAGE_PATH/Taekwondo.svg';
+  static const String sketching = '$IMAGE_PATH/sketching.svg';
+  static const String sculpting = '$IMAGE_PATH/sculpting.svg';
+  static const String reading = '$IMAGE_PATH/reading.svg';
 }
 
 const String ICON_PATH = 'assets/icon';

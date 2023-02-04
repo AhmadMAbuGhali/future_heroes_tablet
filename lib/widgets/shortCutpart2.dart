@@ -16,15 +16,15 @@ class ShortCutWidget2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 200.h,
-      width: 200.w,
+      height: 250.h,
+      width: 250.w,
       padding: EdgeInsets.all(10.00),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8.0),
           border: Border.all(color: ColorManager.gray)),
       child: Column(
         children: [
-          SvgPicture.asset(img),
+          Container(height: 128.h, width: 128.h, child: SvgPicture.asset(img)),
           SizedBox(
             height: 24.h,
           ),
