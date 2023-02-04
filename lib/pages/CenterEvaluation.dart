@@ -52,12 +52,16 @@ class CenterEvaluation extends StatelessWidget {
                     PlusWidget(title: 'المعيارالرابع'),
                     PlusWidget(title: 'المعيار الخامس'),
                     PlusWidget(title: 'المعيار السادس'),
-                    Text('otherDetails'.tr,
-                        style: TextStyle(
-                          fontSize: 12.sp,
-                          color: ColorManager.primary,
-                          fontWeight: FontWeight.bold,
-                        )),
+                    Row(
+                      children: [
+                        Text('إضافة ملاحظات',
+                            style: TextStyle(
+                              fontSize: 12.sp,
+                              color: ColorManager.primary,
+                              fontWeight: FontWeight.bold,
+                            )),
+                      ],
+                    ),
                     TextField(
                       keyboardType: TextInputType.multiline,
                       maxLines: 8,
@@ -66,7 +70,7 @@ class CenterEvaluation extends StatelessWidget {
                         filled: true,
                         contentPadding: EdgeInsets.symmetric(
                             horizontal: 16.w, vertical: 14.h),
-                        hintText: 'otherDetails'.tr,
+                        hintText: 'ساعدنا في تحسين الخدمة المقدمة',
                         hintStyle: getRegularStyle(
                             color: ColorManager.otpDesc,
                             fontSize: FontSize.s12),

@@ -8,10 +8,13 @@ import 'package:future_heroes_tablet/resources/font_manager.dart';
 import 'package:future_heroes_tablet/resources/styles_manager.dart';
 import 'package:future_heroes_tablet/widgets/CustomButtonPrimary.dart';
 import 'package:future_heroes_tablet/widgets/CustomTextTitle.dart';
+import 'package:future_heroes_tablet/widgets/custom_text_feild.dart';
 import 'package:future_heroes_tablet/widgets/plusAndMin.dart';
 import 'package:get/get.dart';
+
 class FeedBack extends StatelessWidget {
-  const FeedBack({super.key});
+  TextEditingController TitleController = TextEditingController();
+  FeedBack({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +28,7 @@ class FeedBack extends StatelessWidget {
         backgroundColor: ColorManager.primary,
         // leading: SvgPicture.asset(ImageAssets.logo),
       ),
- body: SingleChildScrollView(
+      body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.all(16.0),
           child: Center(
@@ -44,24 +47,30 @@ class FeedBack extends StatelessWidget {
                 SizedBox(
                   height: 25.h,
                 ),
-                
                 Column(
                   children: [
                     Column(
                       //   mainAxisAlignment: MainAxisAlignment.start,
                       children: [
+                        CustomTextFeild(
+                            hintText: '',
+                            label: 'عنوان الموضوع',
+                            controller: TitleController),
+                        SizedBox(
+                          height: 32.h,
+                        ),
                         Padding(
                           padding: EdgeInsets.symmetric(horizontal: 12.w),
                           child: Row(
                             children: [
-                              Text('otherDetails'.tr,
+                              Text('الموضوع',
                                   style: TextStyle(
                                     fontSize: 12.sp,
                                     color: ColorManager.primary,
                                     fontWeight: FontWeight.bold,
                                   )),
                             ],
-                          ), 
+                          ),
                         ),
                         TextField(
                           keyboardType: TextInputType.multiline,
@@ -71,7 +80,7 @@ class FeedBack extends StatelessWidget {
                             filled: true,
                             contentPadding: EdgeInsets.symmetric(
                                 horizontal: 16.w, vertical: 14.h),
-                            hintText: 'otherDetails'.tr,
+                            hintText: 'ساعدنا في تحسين الخدمة المقدمة',
                             hintStyle: getRegularStyle(
                                 color: ColorManager.otpDesc,
                                 fontSize: FontSize.s12),
@@ -119,7 +128,7 @@ class FeedBack extends StatelessWidget {
           ),
         ),
       ),
-       drawer: DrowerWidget(),
+      drawer: DrowerWidget(),
     );
   }
 }

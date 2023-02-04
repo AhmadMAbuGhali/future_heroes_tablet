@@ -47,6 +47,9 @@ class DrowerWidget extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.feedback),
             title: Text('ساعدنا لتقديم خدمة افضل'),
+            onTap: () {
+              Get.toNamed(RouteHelper.feedBack);
+            },
           ),
         ],
       ),

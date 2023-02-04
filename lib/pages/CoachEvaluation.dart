@@ -119,7 +119,7 @@ class _CoachEvaluationState extends State<CoachEvaluation> {
                           padding: EdgeInsets.symmetric(horizontal: 12.w),
                           child: Row(
                             children: [
-                              Text('otherDetails'.tr,
+                              Text('إضافة ملاحظات',
                                   style: TextStyle(
                                     fontSize: 12.sp,
                                     color: ColorManager.primary,
@@ -136,7 +136,7 @@ class _CoachEvaluationState extends State<CoachEvaluation> {
                             filled: true,
                             contentPadding: EdgeInsets.symmetric(
                                 horizontal: 16.w, vertical: 14.h),
-                            hintText: 'otherDetails'.tr,
+                            hintText: 'ساعدنا في تحسين الخدمة المقدمة',
                             hintStyle: getRegularStyle(
                                 color: ColorManager.otpDesc,
                                 fontSize: FontSize.s12),
