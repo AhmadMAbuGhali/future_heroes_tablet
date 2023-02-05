@@ -13,6 +13,8 @@ class ImageAssets {
   static const String sketching = '$IMAGE_PATH/sketching.svg';
   static const String sculpting = '$IMAGE_PATH/sculpting.svg';
   static const String reading = '$IMAGE_PATH/reading.svg';
+  static const String magazin = '$IMAGE_PATH/magazin.png';
+  static const String articl = '$IMAGE_PATH/articl.svg';
 }
 
 const String ICON_PATH = 'assets/icon';

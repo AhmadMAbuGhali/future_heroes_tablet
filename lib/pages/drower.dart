@@ -29,6 +29,9 @@ class DrowerWidget extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.menu_book),
             title: Text('مجلة المركز'),
+            onTap: (){
+              Get.toNamed(RouteHelper.clubMagazine);
+            },
           ),
           ListTile(
             leading: Icon(Icons.star),
