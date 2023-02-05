@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:future_heroes_tablet/resources/assets_manager.dart';
 import 'package:future_heroes_tablet/resources/styles_manager.dart';
+import 'package:future_heroes_tablet/widgets/achievements.dart';
 
 import '../resources/color_manager.dart';
 import 'drower.dart';
@@ -44,15 +45,18 @@ Image.asset(ImageAssets.magazin,height: 150,width: 150,),
             ),
           ),
           Container(
-              height: MediaQuery.of(context).size.height*0.75, //height of TabBarView
+              height: MediaQuery.of(context).size.height*0.70, //height of TabBarView
               decoration: BoxDecoration(
                   border: Border(top: BorderSide(color: Colors.grey, width: 0.5))
               ),
               child: TabBarView(children: <Widget>[
-                Container(
-                  child: Center(
-                    child: Text('Display Tab 1', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
-                  ),
+                Center(
+                  child: ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: 7,
+                      itemBuilder: (context,index){
+                    return Achievements();
+                  }),
                 ),
                 Container(
                   child: Center(
