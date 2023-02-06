@@ -5,6 +5,7 @@ import 'package:future_heroes_tablet/pages/drower.dart';
 import 'package:future_heroes_tablet/resources/assets_manager.dart';
 import 'package:future_heroes_tablet/resources/color_manager.dart';
 import 'package:future_heroes_tablet/resources/font_manager.dart';
+import 'package:future_heroes_tablet/resources/my_flutter_app_icons.dart';
 import 'package:future_heroes_tablet/resources/styles_manager.dart';
 import 'package:future_heroes_tablet/widgets/CustomButtonPrimary.dart';
 import 'package:future_heroes_tablet/widgets/CustomTextTitle.dart';
@@ -30,14 +31,21 @@ class _CoachEvaluationState extends State<CoachEvaluation> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          'FUTURE HEROES',
-          style: TextStyle(fontSize: 16.sp),
-        ),
-        centerTitle: true,
-        backgroundColor: ColorManager.primary,
-        // leading: SvgPicture.asset(ImageAssets.logo),
-      ),
+          elevation: 10,
+          title: Text(
+            'FUTURE HEROES',
+            style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+          ),
+          centerTitle: true,
+          backgroundColor: ColorManager.primary,
+          leading: Builder(
+            builder: (context) => IconButton(
+              icon: Icon(MyFlutterApp.th_list),
+              onPressed: () => Scaffold.of(context).openDrawer(),
+            ),
+          )
+          // leading: SvgPicture.asset(ImageAssets.logo),
+          ),
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.all(16.0),
@@ -48,9 +56,9 @@ class _CoachEvaluationState extends State<CoachEvaluation> {
                     height: 128.h,
                     width: 128.w,
                     child: SvgPicture.asset(ImageAssets.review)),
-                CustomTextTitle(text: 'تقييم المدرب'),
+                CustomTextTitle(text: 'CoachEvaluation'.tr),
                 Text(
-                  'ساعدنا في تحسين الخدمة المقدمة',
+                  'Feedback2'.tr,
                   style: TextStyle(
                       color: ColorManager.gray, fontSize: FontSize.s12.sp),
                 ),
@@ -60,11 +68,12 @@ class _CoachEvaluationState extends State<CoachEvaluation> {
                 Column(
                   children: [
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          'اختر اسم المدرب',
+                          'choseCoach'.tr,
                           style: TextStyle(
-                              fontSize: 12.sp,
+                              fontSize: 12,
                               color: ColorManager.primary,
                               fontWeight: FontWeight.bold),
                         ),
@@ -97,21 +106,13 @@ class _CoachEvaluationState extends State<CoachEvaluation> {
                         )
                       ],
                     ),
-                    PlusWidget(
-                      title: 'المعيار الاول',
-                    ),
-                    PlusWidget(
-                      title: 'المعيار الثاني',
-                    ),
-                    PlusWidget(
-                      title: 'المعيار الثالث',
-                    ),
-                    PlusWidget(
-                      title: 'المعيار الرابع',
-                    ),
-                    PlusWidget(
-                      title: 'المعيار الخامس',
-                    ),
+                    PlusWidget(title: 'Thestandard'.tr),
+                    PlusWidget(title: 'Thestandard'.tr),
+                    PlusWidget(title: 'Thestandard'.tr),
+                    PlusWidget(title: 'Thestandard'.tr),
+                    PlusWidget(title: 'Thestandard'.tr),
+                    PlusWidget(title: 'Thestandard'.tr),
+                    PlusWidget(title: 'Thestandard'.tr),
                     Column(
                       //   mainAxisAlignment: MainAxisAlignment.start,
                       children: [
@@ -119,7 +120,7 @@ class _CoachEvaluationState extends State<CoachEvaluation> {
                           padding: EdgeInsets.symmetric(horizontal: 12.w),
                           child: Row(
                             children: [
-                              Text('إضافة ملاحظات',
+                              Text('Addnotes'.tr,
                                   style: TextStyle(
                                     fontSize: 12.sp,
                                     color: ColorManager.primary,
@@ -136,14 +137,13 @@ class _CoachEvaluationState extends State<CoachEvaluation> {
                             filled: true,
                             contentPadding: EdgeInsets.symmetric(
                                 horizontal: 16.w, vertical: 14.h),
-                            hintText: 'ساعدنا في تحسين الخدمة المقدمة',
+                            hintText: 'Feedback2'.tr,
                             hintStyle: getRegularStyle(
                                 color: ColorManager.otpDesc,
                                 fontSize: FontSize.s12),
                             border: OutlineInputBorder(
                                 borderSide: BorderSide(
-                                    color: ColorManager.borderTextFiel,
-                                    width: 1.0),
+                                    color: ColorManager.gray, width: 1.0),
                                 borderRadius: BorderRadius.circular(12.r)),
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(12.r),
@@ -153,8 +153,7 @@ class _CoachEvaluationState extends State<CoachEvaluation> {
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(12.r),
                               borderSide: BorderSide(
-                                  color: ColorManager.borderTextFiel,
-                                  width: 1.0),
+                                  color: ColorManager.gray, width: 1.0),
                             ),
                             errorBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(12.r),

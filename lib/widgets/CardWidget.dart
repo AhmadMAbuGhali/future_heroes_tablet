@@ -7,9 +7,11 @@ class CardWidget extends StatefulWidget {
   Function()? onTap;
   Color? color;
   bool? isChecked;
+  IconData icon;
   CardWidget(
       {super.key,
       required this.title,
+      required this.icon,
       this.color = Colors.grey,
       this.onTap,
       this.isChecked});
@@ -28,10 +30,20 @@ class _CardWidgetState extends State<CardWidget> {
           border: Border.all(color: ColorManager.gray),
           color: ColorManager.white,
           borderRadius: BorderRadius.circular(10.r)),
-      child: Row(
-        children: [
-          Text(widget.title),
-        ],
+      child: Container(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Icon(
+              widget.icon,
+              color: ColorManager.primary,
+            ),
+            SizedBox(
+              width: 10.w,
+            ),
+            Text(widget.title),
+          ],
+        ),
       ),
     );
   }

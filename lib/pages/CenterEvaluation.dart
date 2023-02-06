@@ -4,9 +4,11 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:future_heroes_tablet/pages/drower.dart';
 import 'package:future_heroes_tablet/resources/assets_manager.dart';
 import 'package:future_heroes_tablet/resources/font_manager.dart';
+import 'package:future_heroes_tablet/resources/my_flutter_app_icons.dart';
 import 'package:future_heroes_tablet/resources/styles_manager.dart';
 import 'package:future_heroes_tablet/widgets/CustomButtonPrimary.dart';
 import 'package:future_heroes_tablet/widgets/CustomTextTitle.dart';
+import 'package:future_heroes_tablet/widgets/LogoAuth.dart';
 import 'package:future_heroes_tablet/widgets/plusAndMin.dart';
 import 'package:get/get.dart';
 
@@ -19,14 +21,21 @@ class CenterEvaluation extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          'FUTURE HEROES',
-          style: TextStyle(fontSize: 16.sp),
-        ),
-        centerTitle: true,
-        backgroundColor: ColorManager.primary,
-        // leading: SvgPicture.asset(ImageAssets.logo),
-      ),
+          elevation: 10,
+          title: Text(
+            'FUTURE HEROES',
+            style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+          ),
+          centerTitle: true,
+          backgroundColor: ColorManager.primary,
+          leading: Builder(
+            builder: (context) => IconButton(
+              icon: Icon(MyFlutterApp.th_list),
+              onPressed: () => Scaffold.of(context).openDrawer(),
+            ),
+          )
+          // leading: SvgPicture.asset(ImageAssets.logo),
+          ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -38,25 +47,26 @@ class CenterEvaluation extends StatelessWidget {
                   height: 128.h,
                   child: SvgPicture.asset(ImageAssets.reviews),
                 ),
-                CustomTextTitle(text: 'تقييم المركز'),
+                CustomTextTitle(text: 'Centerevaluation'.tr),
                 Text(
-                  'ساعدنا في تحسين الخدمة المقدمة',
+                  'Feedback2'.tr,
                   style: TextStyle(fontSize: 12.sp, color: ColorManager.gray),
                 ),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    PlusWidget(title: 'المعيار الاول'),
-                    PlusWidget(title: 'المعيار الثاني'),
-                    PlusWidget(title: 'المعيار الثالث'),
-                    PlusWidget(title: 'المعيارالرابع'),
-                    PlusWidget(title: 'المعيار الخامس'),
-                    PlusWidget(title: 'المعيار السادس'),
+                    PlusWidget(title: 'Thestandard'.tr),
+                    PlusWidget(title: 'Thestandard'.tr),
+                    PlusWidget(title: 'Thestandard'.tr),
+                    PlusWidget(title: 'Thestandard'.tr),
+                    PlusWidget(title: 'Thestandard'.tr),
+                    PlusWidget(title: 'Thestandard'.tr),
+                    PlusWidget(title: 'Thestandard'.tr),
                     Row(
                       children: [
-                        Text('إضافة ملاحظات',
+                        Text('Addnotes'.tr,
                             style: TextStyle(
-                              fontSize: 12.sp,
+                              fontSize: 12,
                               color: ColorManager.primary,
                               fontWeight: FontWeight.bold,
                             )),
@@ -70,13 +80,13 @@ class CenterEvaluation extends StatelessWidget {
                         filled: true,
                         contentPadding: EdgeInsets.symmetric(
                             horizontal: 16.w, vertical: 14.h),
-                        hintText: 'ساعدنا في تحسين الخدمة المقدمة',
+                        hintText: 'Feedback2'.tr,
                         hintStyle: getRegularStyle(
                             color: ColorManager.otpDesc,
                             fontSize: FontSize.s12),
                         border: OutlineInputBorder(
                             borderSide: BorderSide(
-                                color: ColorManager.borderTextFiel, width: 1.0),
+                                color: ColorManager.gray, width: 1.0),
                             borderRadius: BorderRadius.circular(12.r)),
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(12.r),
@@ -85,8 +95,8 @@ class CenterEvaluation extends StatelessWidget {
                         ),
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(12.r),
-                          borderSide: BorderSide(
-                              color: ColorManager.borderTextFiel, width: 1.0),
+                          borderSide:
+                              BorderSide(color: ColorManager.gray, width: 1.0),
                         ),
                         errorBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(12.r),

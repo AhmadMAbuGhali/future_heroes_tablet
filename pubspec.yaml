@@ -106,6 +106,19 @@ flutter:
       fonts:
         - asset: assets/fonts/DroidKufi-Regular.ttf
         - asset: assets/fonts/DroidKufi-Bold.ttf
+
+    - family: Tajawal
+      fonts:
+        - asset: assets/fonts/Tajawal-Regular.ttf
+        - asset: assets/fonts/Tajawal-Bold.ttf
+
+ 
+    - family:  MyFlutterAppv1
+      fonts:
+        - asset: assets/fonts/MyFlutterAppv1.ttf
+    - family:  MyFlutterAppv2
+      fonts:
+        - asset: assets/fonts/MyFlutterAppv2.ttf
   # fonts:
   #   - family: Schyler
   #     fonts:

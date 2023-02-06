@@ -17,7 +17,7 @@ class ShortCutWidget2 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 250.h,
-      width: 250.w,
+      width: 150.w,
       padding: EdgeInsets.all(10.00),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8.0),

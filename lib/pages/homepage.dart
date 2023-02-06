@@ -2,12 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:future_heroes_tablet/pages/drower.dart';
+
 import 'package:future_heroes_tablet/resources/assets_manager.dart';
 import 'package:future_heroes_tablet/resources/color_manager.dart';
 import 'package:future_heroes_tablet/resources/font_manager.dart';
+import 'package:future_heroes_tablet/resources/my_flutter_app_icons.dart';
+import 'package:future_heroes_tablet/routes/route_helper.dart';
+import 'package:future_heroes_tablet/widgets/CardWidget.dart';
 import 'package:future_heroes_tablet/widgets/CustomButtonPrimary.dart';
 import 'package:future_heroes_tablet/widgets/CustomTextTitle.dart';
 import 'package:future_heroes_tablet/widgets/LogoAuth.dart';
+import 'package:future_heroes_tablet/widgets/footer.dart';
 import 'package:future_heroes_tablet/widgets/shortCut.dart';
 import 'package:future_heroes_tablet/widgets/shortCutpart2.dart';
 import 'package:get/get.dart';
@@ -19,26 +24,39 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          'FUTURE HEROES',
-          style: TextStyle(fontSize: 16.sp),
-        ),
-        centerTitle: true,
-        backgroundColor: ColorManager.primary,
-        // leading: SvgPicture.asset(ImageAssets.logo),
-      ),
+          elevation: 10,
+          title: Text(
+            'FUTURE HEROES',
+            style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+          ),
+          centerTitle: true,
+          backgroundColor: ColorManager.primary,
+          leading: Builder(
+            builder: (context) => IconButton(
+              icon: Icon(MyFlutterApp.th_list),
+              onPressed: () => Scaffold.of(context).openDrawer(),
+            ),
+          )
+          // leading: SvgPicture.asset(ImageAssets.logo),
+          ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              CustomTextTitle(text: 'اهلا وسهلا بك عزيزي  الزائر'),
+              Text(
+                'WelcomeVisitor'.tr,
+                style: TextStyle(
+                    color: ColorManager.primary,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16),
+              ),
+              //  CustomTextTitle(text: 'اهلا وسهلا بك عزيزي  الزائر'),
               SizedBox(
                 height: 16.h,
               ),
-              Text(
-                  'هناك حقيقة مثبتة منذ زمن طويل  وهي أن المحتوى  المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي.. هناك حقيقة مثبتة منذ زمن طويل  وهي أن المحتوى  المقروء لصفحة ما سيلهي القارئ عن التركيز على هناك حقيقة مثبتة منذ زمن طويل  وهي أن المحتوى  المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي.. هناك حقيقة مثبتة منذ زمن طويل  وهي أن المحتوى  المقروء لصفحة ما سيلهي القارئ عن التركيز على هناك حقيقة مثبتة منذ زمن طويل  وهي أن المحتوى  المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي.. هناك حقيقة مثبتة منذ زمن طويل  وهي أن المحتوى  المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي.'),
+              Text('termBody'.tr),
 
               // Text(
               //   'termBody'.tr,
@@ -47,33 +65,46 @@ class HomePage extends StatelessWidget {
               SizedBox(
                 height: 30.h,
               ),
-              CustomTextTitle(text: 'من نحن'),
+              Text(
+                'WhoWeAre'.tr,
+                style: TextStyle(
+                    color: ColorManager.black,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16),
+              ),
+              //  CustomTextTitle(text: 'من نحن'),
               LogoAuth(),
               Text(
-                'دعنا نساعدك في التعرف على النادي بشكل افضل',
-                style: TextStyle(
-                    color: ColorManager.gray, fontSize: FontSize.s12.sp),
+                'WhoWeAre2'.tr,
+                style: TextStyle(color: ColorManager.gray, fontSize: 14),
               ),
               SizedBox(
                 height: 16.h,
               ),
-              Text(
-                  'هناك حقيقة مثبتة منذ زمن طويل  وهي أن المحتوى  المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي.. هناك حقيقة مثبتة منذ زمن طويل  وهي أن المحتوى  المقروء لصفحة ما سيلهي القارئ عن التركيز على هناك حقيقة مثبتة منذ زمن طويل  وهي أن المحتوى  المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي.. هناك حقيقة مثبتة منذ زمن طويل  وهي أن المحتوى  المقروء لصفحة ما سيلهي القارئ عن التركيز على هناك حقيقة مثبتة منذ زمن طويل  وهي أن المحتوى  المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي.. هناك حقيقة مثبتة منذ زمن طويل  وهي أن المحتوى  المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي.'),
+              Text('termBody'.tr),
               SizedBox(
                 height: 16.h,
               ),
-              CustomButtonPrimary(text: 'عرض المزيد', onpressed: () {}),
+              CustomButtonPrimary(text: 'ShowMore'.tr, onpressed: () {}),
               SizedBox(
                 height: 50.h,
               ),
-              CustomTextTitle(text: 'خدماتنا '),
+              Text(
+                'OurServices'.tr,
+                style: TextStyle(
+                    color: ColorManager.black,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16),
+              ),
               SizedBox(
                 height: 16.h,
               ),
               Text(
-                'دعنا نساعدك في التعرف على الخدمات المقدمة من النادي بشكل افضل',
-                style: TextStyle(
-                    color: ColorManager.gray, fontSize: FontSize.s12.sp),
+                'OurServices2'.tr,
+                style: TextStyle(color: ColorManager.gray, fontSize: 12),
+              ),
+              SizedBox(
+                height: 20.h,
               ),
 
               SingleChildScrollView(
@@ -81,42 +112,42 @@ class HomePage extends StatelessWidget {
                 child: Row(
                   children: [
                     ShortCutWidget2(
-                      text: 'النحت',
+                      text: 'Sculpture'.tr,
                       img: ImageAssets.sculpting,
                     ),
                     SizedBox(
                       width: 40.w,
                     ),
                     ShortCutWidget2(
-                      text: 'الرسم',
+                      text: 'drawing'.tr,
                       img: ImageAssets.sketching,
                     ),
                     SizedBox(
                       width: 40.w,
                     ),
                     ShortCutWidget2(
-                      text: 'الخط',
+                      text: 'font'.tr,
                       img: ImageAssets.reading,
                     ),
                     SizedBox(
                       width: 40.w,
                     ),
                     ShortCutWidget2(
-                      text: 'جمباز',
+                      text: 'Gymnastics'.tr,
                       img: ImageAssets.Gymnastics,
                     ),
                     SizedBox(
                       width: 40.w,
                     ),
                     ShortCutWidget2(
-                      text: 'كاراتيه',
+                      text: 'Karate'.tr,
                       img: ImageAssets.karate,
                     ),
                     SizedBox(
                       width: 40.w,
                     ),
                     ShortCutWidget2(
-                      text: 'تايكواندو',
+                      text: 'taekwondo'.tr,
                       img: ImageAssets.Taekwondo,
                     ),
                   ],
@@ -125,39 +156,55 @@ class HomePage extends StatelessWidget {
               SizedBox(
                 height: 30.h,
               ),
-              CustomTextTitle(text: 'اختصارات '),
+              CustomTextTitle(text: 'Shortcuts'.tr),
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: [
                     ShortCutWidget(
-                      text: 'مجلة المركز',
+                      onpress: () {
+                        Get.toNamed(RouteHelper.clubMagazine);
+                      },
+                      text: 'CenterMagazine'.tr,
                       img: ImageAssets.book,
                     ),
                     SizedBox(
                       width: 16.w,
                     ),
                     ShortCutWidget(
-                      text: 'تقييم المدرب',
+                      onpress: () {
+                        Get.toNamed(RouteHelper.coachEvaluation);
+                      },
+                      text: 'CoachEvaluation'.tr,
                       img: ImageAssets.review,
                     ),
                     SizedBox(
                       width: 16.w,
                     ),
                     ShortCutWidget(
-                      text: 'تقييم المركز',
+                      onpress: () {
+                        Get.toNamed(RouteHelper.centerEvaluation);
+                      },
+                      text: 'Centerevaluation'.tr,
                       img: ImageAssets.reviews,
                     ),
                     SizedBox(
                       width: 16.w,
                     ),
                     ShortCutWidget(
-                      text: 'تغذية راجعة',
+                      onpress: () {
+                        Get.toNamed(RouteHelper.feedBack);
+                      },
+                      text: 'Feedback'.tr,
                       img: ImageAssets.feedback,
                     ),
                   ],
                 ),
-              )
+              ),
+              SizedBox(
+                height: 20.h,
+              ),
+              FooterWidget(),
             ],
           ),
         ),

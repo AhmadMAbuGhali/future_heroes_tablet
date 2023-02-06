@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
             translations: MyLocale(),
             debugShowCheckedModeBanner: false,
             theme: ThemeData(
-              fontFamily: 'DroidKufi',
+              fontFamily: 'Tajawal',
               primaryColor: Color(0xFF8A57DC),
             ),
             initialRoute: RouteHelper.homePage,

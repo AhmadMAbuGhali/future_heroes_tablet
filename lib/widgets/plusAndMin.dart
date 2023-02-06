@@ -23,7 +23,7 @@ class _PlusWidgetState extends State<PlusWidget> {
           Text(
             widget.title,
             style: TextStyle(
-                fontSize: 12.sp,
+                fontSize: 12,
                 color: ColorManager.primary,
                 fontWeight: FontWeight.bold),
           ),

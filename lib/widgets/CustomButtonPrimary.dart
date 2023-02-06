@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../resources/color_manager.dart';
 import '../resources/styles_manager.dart';
 
-
 class CustomButtonPrimary extends StatelessWidget {
   final String text;
   final void Function() onpressed;
@@ -22,18 +21,18 @@ class CustomButtonPrimary extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      margin:  EdgeInsets.only(top: 10.h),
+      margin: EdgeInsets.only(top: 10.h),
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.r)),
           foregroundColor: ColorManager.white,
           side: BorderSide(color: ColorManager.primary),
-          padding:  EdgeInsets.symmetric(vertical: 10.h),
+          padding: EdgeInsets.symmetric(vertical: 10.h),
           primary: buttonColor,
           textStyle: TextStyle(
             fontFamily: 'DroidKufi',
-            fontSize: 16.sp,
+            fontSize: 14,
           ),
         ),
         onPressed: onpressed,

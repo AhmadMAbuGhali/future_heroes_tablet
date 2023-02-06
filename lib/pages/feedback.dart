@@ -5,8 +5,10 @@ import 'package:future_heroes_tablet/pages/drower.dart';
 import 'package:future_heroes_tablet/resources/assets_manager.dart';
 import 'package:future_heroes_tablet/resources/color_manager.dart';
 import 'package:future_heroes_tablet/resources/font_manager.dart';
+import 'package:future_heroes_tablet/resources/my_flutter_app_icons.dart';
 import 'package:future_heroes_tablet/resources/styles_manager.dart';
 import 'package:future_heroes_tablet/widgets/CustomButtonPrimary.dart';
+import 'package:future_heroes_tablet/widgets/CustomTextFormAuth.dart';
 import 'package:future_heroes_tablet/widgets/CustomTextTitle.dart';
 import 'package:future_heroes_tablet/widgets/custom_text_feild.dart';
 import 'package:future_heroes_tablet/widgets/plusAndMin.dart';
@@ -20,14 +22,21 @@ class FeedBack extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          'FUTURE HEROES',
-          style: TextStyle(fontSize: 16.sp),
-        ),
-        centerTitle: true,
-        backgroundColor: ColorManager.primary,
-        // leading: SvgPicture.asset(ImageAssets.logo),
-      ),
+          elevation: 10,
+          title: Text(
+            'FUTURE HEROES',
+            style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+          ),
+          centerTitle: true,
+          backgroundColor: ColorManager.primary,
+          leading: Builder(
+            builder: (context) => IconButton(
+              icon: Icon(MyFlutterApp.th_list),
+              onPressed: () => Scaffold.of(context).openDrawer(),
+            ),
+          )
+          // leading: SvgPicture.asset(ImageAssets.logo),
+          ),
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.all(16.0),
@@ -38,9 +47,9 @@ class FeedBack extends StatelessWidget {
                     height: 128.h,
                     width: 128.w,
                     child: SvgPicture.asset(ImageAssets.feedback)),
-                CustomTextTitle(text: 'تقديم تغذية راجعة'),
+                CustomTextTitle(text: 'Feedback'.tr),
                 Text(
-                  'ساعدنا في تحسين الخدمة المقدمة',
+                  'Feedback2'.tr,
                   style: TextStyle(
                       color: ColorManager.gray, fontSize: FontSize.s12.sp),
                 ),
@@ -50,27 +59,42 @@ class FeedBack extends StatelessWidget {
                 Column(
                   children: [
                     Column(
-                      //   mainAxisAlignment: MainAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        CustomTextFeild(
-                            hintText: '',
-                            label: 'عنوان الموضوع',
-                            controller: TitleController),
+                        Row(
+                          children: [
+                            Text(
+                              'Title'.tr,
+                              style: TextStyle(
+                                fontSize: 12,
+                                color: ColorManager.primary,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
+
+                        CustomTextFormAuth(
+                          labelText: 'Title'.tr,
+                          hintText: 'AddressHint'.tr,
+                          myController: TitleController,
+                        ),
+                        // CustomTextFeild(
+                        //     hintText: 'اكتب العنوان هنا',
+                        //     label: 'عنوان الموضوع',
+                        //     controller: TitleController),
                         SizedBox(
                           height: 32.h,
                         ),
-                        Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 12.w),
-                          child: Row(
-                            children: [
-                              Text('الموضوع',
-                                  style: TextStyle(
-                                    fontSize: 12.sp,
-                                    color: ColorManager.primary,
-                                    fontWeight: FontWeight.bold,
-                                  )),
-                            ],
-                          ),
+                        Row(
+                          children: [
+                            Text('topic'.tr,
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  color: ColorManager.primary,
+                                  fontWeight: FontWeight.bold,
+                                )),
+                          ],
                         ),
                         TextField(
                           keyboardType: TextInputType.multiline,
@@ -80,14 +104,14 @@ class FeedBack extends StatelessWidget {
                             filled: true,
                             contentPadding: EdgeInsets.symmetric(
                                 horizontal: 16.w, vertical: 14.h),
-                            hintText: 'ساعدنا في تحسين الخدمة المقدمة',
+                            hintText: 'Feedback2'.tr,
                             hintStyle: getRegularStyle(
                                 color: ColorManager.otpDesc,
                                 fontSize: FontSize.s12),
                             border: OutlineInputBorder(
                                 borderSide: BorderSide(
-                                    color: ColorManager.borderTextFiel,
-                                    width: 1.0),
+                                  color: ColorManager.gray,
+                                ),
                                 borderRadius: BorderRadius.circular(12.r)),
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(12.r),
@@ -97,8 +121,7 @@ class FeedBack extends StatelessWidget {
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(12.r),
                               borderSide: BorderSide(
-                                  color: ColorManager.borderTextFiel,
-                                  width: 1.0),
+                                  color: ColorManager.gray, width: 1.0),
                             ),
                             errorBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(12.r),
@@ -111,14 +134,7 @@ class FeedBack extends StatelessWidget {
                           ),
                         ),
                         CustomButtonPrimary(
-                            text: 'Submitevaluation'.tr,
-                            onpressed: () {
-                              // snakbarWidget(context,
-                              //     Titel: 'تم الارسال بنجاح',
-                              //     Description: 'شكرا لك ايها المعلم');
-
-                              //    Get.toNamed(RouteHelper.showStudents);
-                            }),
+                            text: 'Submitevaluation'.tr, onpressed: () {}),
                       ],
                     )
                   ],

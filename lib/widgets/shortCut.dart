@@ -7,8 +7,10 @@ import 'package:future_heroes_tablet/resources/color_manager.dart';
 class ShortCutWidget extends StatelessWidget {
   String text;
   String img;
+  void Function()? onpress;
   ShortCutWidget({
     super.key,
+    required this.onpress,
     required this.text,
     required this.img,
   });
@@ -16,21 +18,27 @@ class ShortCutWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: 80.w,
+      height: 140.h,
       padding: EdgeInsets.all(10.00),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8.0),
           border: Border.all(color: ColorManager.gray)),
-      child: Column(
-        children: [
-          SvgPicture.asset(img),
-          SizedBox(
-            height: 8.h,
-          ),
-          Text(
-            text,
-            style: TextStyle(color: ColorManager.primary),
-          ),
-        ],
+      child: InkWell(
+        onTap: onpress,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            SvgPicture.asset(img),
+            SizedBox(
+              height: 8.h,
+            ),
+            Text(
+              text,
+              style: TextStyle(color: ColorManager.primary),
+            ),
+          ],
+        ),
       ),
     );
   }

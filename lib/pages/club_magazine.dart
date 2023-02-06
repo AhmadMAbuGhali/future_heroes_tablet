@@ -1,81 +1,176 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:future_heroes_tablet/resources/assets_manager.dart';
+import 'package:future_heroes_tablet/resources/font_manager.dart';
+import 'package:future_heroes_tablet/resources/my_flutter_app_icons.dart';
 import 'package:future_heroes_tablet/resources/styles_manager.dart';
+import 'package:future_heroes_tablet/widgets/OffersWidget.dart';
+import 'package:future_heroes_tablet/widgets/PlansWidget.dart';
 import 'package:future_heroes_tablet/widgets/achievements.dart';
+import 'package:get/get.dart';
 
 import '../resources/color_manager.dart';
 import 'drower.dart';
 
-class ClubMagazine extends StatelessWidget {
+class ClubMagazine extends StatefulWidget {
   const ClubMagazine({Key? key}) : super(key: key);
 
   @override
+  State<ClubMagazine> createState() => _ClubMagazineState();
+}
+
+class _ClubMagazineState extends State<ClubMagazine> {
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'FUTURE HEROES',
-          style: TextStyle(fontSize: 16.sp),
-        ),
-        centerTitle: true,
-        backgroundColor: ColorManager.primary,
-        // leading: SvgPicture.asset(ImageAssets.logo),
-      ),
-body: Column(
-  children: [
-Image.asset(ImageAssets.magazin,height: 150,width: 150,),
-    Text("مجلة المركز ",style: getBoldStyle(color: ColorManager.black),),
-
-
-    DefaultTabController(
-        length: 3, // length of tabs
-        initialIndex: 0,
-        child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: <Widget>[
-          Container(
-            child: TabBar(
-              labelColor: Colors.green,
-              unselectedLabelColor: Colors.black,
-              tabs: [
-                Tab(text: 'انجازات النادي'),
-                Tab(text: 'الخطط المستقبلية '),
-                Tab(text: 'العروض'),
-
-              ],
+    return DefaultTabController(
+      length: 3,
+      initialIndex: 0,
+      child: Scaffold(
+        appBar: AppBar(
+            elevation: 10,
+            title: Text(
+              'FUTURE HEROES',
+              style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
             ),
-          ),
-          Container(
-              height: MediaQuery.of(context).size.height*0.70, //height of TabBarView
-              decoration: BoxDecoration(
-                  border: Border(top: BorderSide(color: Colors.grey, width: 0.5))
+            centerTitle: true,
+            backgroundColor: ColorManager.primary,
+            leading: Builder(
+              builder: (context) => IconButton(
+                icon: Icon(MyFlutterApp.th_list),
+                onPressed: () => Scaffold.of(context).openDrawer(),
               ),
-              child: TabBarView(children: <Widget>[
-                Center(
-                  child: ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: 7,
-                      itemBuilder: (context,index){
-                    return Achievements();
-                  }),
-                ),
-                Container(
-                  child: Center(
-                    child: Text('Display Tab 2', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
+            )
+            // leading: SvgPicture.asset(ImageAssets.logo),
+            ),
+        body: Center(
+          child: Column(
+            children: [
+              Image.asset(
+                ImageAssets.magazin,
+                height: 150,
+                width: 150,
+              ),
+              Text(
+                'CenterMagazine'.tr,
+                style: getBoldStyle(color: ColorManager.black),
+              ),
+              Text(
+                'Feedback2'.tr,
+                style:
+                    TextStyle(color: ColorManager.gray, fontSize: FontSize.s12),
+              ),
+              SizedBox(
+                height: 56.h,
+                child: AppBar(
+                    backgroundColor: ColorManager.primary,
+                    bottom: TabBar(
+                      labelColor: ColorManager.white,
+                      indicatorColor: ColorManager.green,
+                      labelStyle: TextStyle(
+                          fontWeight: FontWeight.bold, fontFamily: 'Tajawal'),
+                      unselectedLabelStyle: TextStyle(
+                          fontWeight: FontWeight.normal, fontFamily: 'Tajawal'),
+                      tabs: [
+                        Tab(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Icon(
+                                MyFlutterApp.fire,
+                                size: 16,
+                                color: ColorManager.white,
+                              ),
+                              Text('Clubachievements'.tr),
+                            ],
+                          ),
+                        ),
+                        Tab(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Icon(
+                                MyFlutterApp.paper_plane,
+                                size: 16,
+                                color: ColorManager.white,
+                              ),
+                              Text('futureplans'.tr),
+                            ],
+                          ),
+                        ),
+                        Tab(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Icon(
+                                MyFlutterApp.tags,
+                                size: 16,
+                                color: ColorManager.white,
+                              ),
+                              Text('offer'.tr),
+                            ],
+                          ),
+                        ),
+                      ],
+                    )),
+              ),
+              Expanded(
+                  child: TabBarView(
+                children: [
+                  // انجازات النادي
+                  Container(
+                    child: SingleChildScrollView(
+                      child: Center(
+                          child: Column(
+                        children: [
+                          Achievements(),
+                          Achievements(),
+                          Achievements(),
+                          Achievements(),
+                          Achievements(),
+                          Achievements(),
+                        ],
+                      )),
+                    ),
                   ),
-                ),
-                Container(
-                  child: Center(
-                    child: Text('Display Tab 3', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
+                  // الخطط المستقبلسية
+                  Container(
+                    child: SingleChildScrollView(
+                      child: Center(
+                          child: Column(
+                        children: [
+                          PlansWidget(),
+                          PlansWidget(),
+                          PlansWidget(),
+                          PlansWidget(),
+                          PlansWidget(),
+                          PlansWidget(),
+                        ],
+                      )),
+                    ),
                   ),
-                ),
-
-              ])
-          )
-        ])
-    ),
-  ],
-),
-      drawer: DrowerWidget(),
+                  // العروض
+                  Container(
+                    child: SingleChildScrollView(
+                      child: Center(
+                          child: Column(
+                        children: [
+                          OffersWidget(),
+                          OffersWidget(),
+                          OffersWidget(),
+                          OffersWidget(),
+                          OffersWidget(),
+                          OffersWidget(),
+                        ],
+                      )),
+                    ),
+                  ),
+                ],
+              ))
+            ],
+          ),
+        ),
+        drawer: DrowerWidget(),
+      ),
     );
   }
 }

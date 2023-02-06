@@ -7,14 +7,14 @@ import 'package:get/get.dart';
 import '../resources/color_manager.dart';
 import '../resources/styles_manager.dart';
 
-class Achievements extends StatefulWidget {
-  Achievements({Key? key}) : super(key: key);
+class PlansWidget extends StatefulWidget {
+  PlansWidget({Key? key}) : super(key: key);
 
   @override
-  State<Achievements> createState() => _AchievementsState();
+  State<PlansWidget> createState() => _PlansWidgetsState();
 }
 
-class _AchievementsState extends State<Achievements> {
+class _PlansWidgetsState extends State<PlansWidget> {
   bool isExpanded = true;
 
   @override
@@ -43,7 +43,7 @@ class _AchievementsState extends State<Achievements> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Image.asset(
-                            ImageAssets.articl,
+                            ImageAssets.logopng,
                             // height: 200.h,
                             // width: 200.w,
                           ),
@@ -60,7 +60,7 @@ class _AchievementsState extends State<Achievements> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  'Clubachievements'.tr,
+                                  'futureplans'.tr,
                                   style: getBoldStyle(
                                       color: ColorManager.primary,
                                       fontSize: 14.sp),
@@ -114,7 +114,7 @@ class _AchievementsState extends State<Achievements> {
                       child: Column(
                         children: [
                           Image.asset(
-                            ImageAssets.articl,
+                            ImageAssets.logopng,
                             // height: 200.h,
                             // width: 150.w,
                           ),
@@ -132,7 +132,7 @@ class _AchievementsState extends State<Achievements> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  'Clubachievements'.tr,
+                                  'futureplans'.tr,
                                   style: getBoldStyle(
                                       color: ColorManager.primary,
                                       fontSize: 14.sp),
@@ -143,7 +143,7 @@ class _AchievementsState extends State<Achievements> {
                                         isExpanded = !isExpanded;
                                       });
                                     },
-                                    icon: Icon(Icons.keyboard_arrow_up)),
+                                    icon: Icon(Icons.keyboard_arrow_down)),
                               ],
                             ),
                           ),
