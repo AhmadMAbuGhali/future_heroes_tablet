@@ -62,10 +62,7 @@ class DrowerWidget extends StatelessWidget {
             leading: Icon(Icons.language),
             title: Text('changeDisplayLang'.tr),
             onTap: () {
-              Locale localeEn = new Locale("en");
-              Locale localeAr = new Locale("ar");
-
-              controllerLang.changLocal("ar");
+              Get.toNamed(RouteHelper.language);
             },
           ),
         ],

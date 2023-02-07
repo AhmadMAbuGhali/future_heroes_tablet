@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:future_heroes_tablet/resources/assets_manager.dart';
 import 'package:future_heroes_tablet/resources/color_manager.dart';
+import 'package:future_heroes_tablet/resources/styles_manager.dart';
 
 class ShortCutWidget extends StatelessWidget {
   String text;
@@ -27,15 +28,15 @@ class ShortCutWidget extends StatelessWidget {
       child: InkWell(
         onTap: onpress,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            SvgPicture.asset(img),
+            SvgPicture.asset(img,width: 80.w,height: 80.h,),
             SizedBox(
-              height: 8.h,
+              height: 2.h,
             ),
             Text(
               text,
-              style: TextStyle(color: ColorManager.primary),
+              style: getBoldStyle(color: ColorManager.primary),
             ),
           ],
         ),

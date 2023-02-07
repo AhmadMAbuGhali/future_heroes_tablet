@@ -4,6 +4,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:future_heroes_tablet/resources/assets_manager.dart';
 import 'package:future_heroes_tablet/resources/color_manager.dart';
 
+import '../resources/styles_manager.dart';
+
 class ShortCutWidget2 extends StatelessWidget {
   String text;
   String img;
@@ -34,7 +36,8 @@ class ShortCutWidget2 extends StatelessWidget {
           ),
           Text(
             text,
-            style: TextStyle(color: ColorManager.primary),
+            style: getBoldStyle(color: ColorManager.primary),
+
           ),
         ],
       ),
