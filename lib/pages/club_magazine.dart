@@ -60,58 +60,60 @@ class _ClubMagazineState extends State<ClubMagazine> {
                     TextStyle(color: ColorManager.gray, fontSize: FontSize.s12),
               ),
               SizedBox(
-                height: 56.h,
-                child: AppBar(
-                    backgroundColor: ColorManager.primary,
-                    bottom: TabBar(
-                      labelColor: ColorManager.white,
-                      indicatorColor: ColorManager.green,
-                      labelStyle: TextStyle(
-                          fontWeight: FontWeight.bold, fontFamily: 'Tajawal'),
-                      unselectedLabelStyle: TextStyle(
-                          fontWeight: FontWeight.normal, fontFamily: 'Tajawal'),
-                      tabs: [
-                        Tab(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              Icon(
-                                MyFlutterApp.fire,
-                                size: 16,
-                                color: ColorManager.white,
-                              ),
-                              Text('Clubachievements'.tr),
-                            ],
+                height: 30.h,
+                child: Container(
+                  color: ColorManager.primary,
+                  child: TabBar(
+
+                        labelColor: ColorManager.white,
+                        indicatorColor: ColorManager.green,
+                        labelStyle: TextStyle(
+                            fontWeight: FontWeight.bold, fontFamily: 'Tajawal'),
+                        unselectedLabelStyle: TextStyle(
+                            fontWeight: FontWeight.normal, fontFamily: 'Tajawal'),
+                        tabs: [
+                          Tab(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                Icon(
+                                  MyFlutterApp.fire,
+                                  size: 16,
+                                  color: ColorManager.white,
+                                ),
+                                Text('Clubachievements'.tr),
+                              ],
+                            ),
                           ),
-                        ),
-                        Tab(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              Icon(
-                                MyFlutterApp.paper_plane,
-                                size: 16,
-                                color: ColorManager.white,
-                              ),
-                              Text('futureplans'.tr),
-                            ],
+                          Tab(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                Icon(
+                                  MyFlutterApp.paper_plane,
+                                  size: 16,
+                                  color: ColorManager.white,
+                                ),
+                                Text('futureplans'.tr),
+                              ],
+                            ),
                           ),
-                        ),
-                        Tab(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              Icon(
-                                MyFlutterApp.tags,
-                                size: 16,
-                                color: ColorManager.white,
-                              ),
-                              Text('offer'.tr),
-                            ],
+                          Tab(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                Icon(
+                                  MyFlutterApp.tags,
+                                  size: 16,
+                                  color: ColorManager.white,
+                                ),
+                                Text('offer'.tr),
+                              ],
+                            ),
                           ),
-                        ),
-                      ],
-                    )),
+                        ],
+                      ),
+                )
               ),
               Expanded(
                   child: TabBarView(
