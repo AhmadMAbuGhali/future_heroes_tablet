@@ -3,19 +3,34 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:future_heroes_tablet/routes/route_helper.dart';
+import 'package:future_heroes_tablet/services/app_provider.dart';
 
 import 'package:get/get.dart';
+import 'package:get_it/get_it.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'locale/locale.dart';
 import 'locale/locale_controller.dart';
 
 late SharedPreferences shaedpref;
+GetIt getIt = GetIt.instance;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   shaedpref = await SharedPreferences.getInstance();
-  runApp(MyApp());
+  final prefs = await SharedPreferences.getInstance();
+    getIt.registerLazySingleton<AppProvider>(() => AppProvider());
+
+  runApp(
+    MultiProvider(
+      providers: [
+
+        ChangeNotifierProvider(create: (_) => AppProvider()),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {

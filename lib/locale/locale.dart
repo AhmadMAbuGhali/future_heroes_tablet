@@ -190,6 +190,7 @@ class MyLocale extends Translations {
           "ratingObligationTrainingBody":
               "تقييمك في الالتزام بالتمرينات هو 3  من5",
           "ratingLiteratureAndEthicsTitle": "الادب والأخلاق :",
+          "problem": "هناك مشكلة",
           "ratingLiteratureAndEthicsBody":
               "تقييمك في  الادب والأخلاق هو 3  من  5",
           "coachNoteTitle": ": ملاحظات أخرى من المدرب",
@@ -212,6 +213,8 @@ class MyLocale extends Translations {
           "notificationBody":
               "هناك حقيقة مثبتة منذ زمن طويل  وهي أن المحتوى  المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي..",
           "noOffer": "لا يوجد عروض حاليا",
+          "noInternet": "للأسف قد تعذر الإتصال بالأنترنت. يرجى التحقق من فضلك.",
+
           "offerTitle": "عرض جديد",
           "offerBody":
               "هناك حقيقة مثبتة منذ زمن طويل  وهي أن المحتوى  المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي..",
@@ -288,6 +291,9 @@ class MyLocale extends Translations {
           "sport": " Sport ",
           "cultural": "cultural",
           "continue": "Continue",
+          "problem": "There is a problem",
+          "noInternet":
+          "Unfortunately, it is not possible to connect to the Internet. Please check.",
           "Karate": "Karate",
           "Gymnastics": "Gymnastics",
           "taekwondo": "taekwondo",

@@ -9,6 +9,7 @@ import '../resources/styles_manager.dart';
 class ShortCutWidget2 extends StatelessWidget {
   String text;
   String img;
+
   ShortCutWidget2({
     super.key,
     required this.text,
@@ -30,14 +31,17 @@ class ShortCutWidget2 extends StatelessWidget {
           SizedBox(
             height: 15.h,
           ),
-          Container(height: 128.h, width: 128.h, child: SvgPicture.asset(img)),
+          Container(
+            height: 128.h,
+            width: 128.h,
+            child: Image.network(img),
+          ),
           SizedBox(
             height: 24.h,
           ),
           Text(
             text,
             style: getBoldStyle(color: ColorManager.primary),
-
           ),
         ],
       ),

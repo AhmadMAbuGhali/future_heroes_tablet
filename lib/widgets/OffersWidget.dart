@@ -8,7 +8,11 @@ import '../resources/color_manager.dart';
 import '../resources/styles_manager.dart';
 
 class OffersWidget extends StatefulWidget {
-  OffersWidget({Key? key}) : super(key: key);
+
+  String title;
+  String disc;
+
+  OffersWidget({Key? key,required this.title,required this.disc}) : super(key: key);
 
   @override
   State<OffersWidget> createState() => _OffersWidgetState();
@@ -60,10 +64,10 @@ class _OffersWidgetState extends State<OffersWidget> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  "offerTitle".tr,
-                                  style: getBoldStyle(
+                                  widget.title,
+                                  style: getRegularStyle(
                                       color: ColorManager.primary,
-                                      fontSize: 14.sp),
+                                      fontSize: 12.sp),
                                 ),
                                 IconButton(
                                     onPressed: () {
@@ -78,7 +82,7 @@ class _OffersWidgetState extends State<OffersWidget> {
                           Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Text(
-                              "termBody".tr,
+                              widget.disc,
                               softWrap: true,
                               maxLines: 5,
                               overflow: TextOverflow.ellipsis,
@@ -132,10 +136,10 @@ class _OffersWidgetState extends State<OffersWidget> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  "offerTitle".tr,
-                                  style: getBoldStyle(
+                                  widget.title,
+                                  style: getRegularStyle(
                                       color: ColorManager.primary,
-                                      fontSize: 14.sp),
+                                      fontSize: 12.sp),
                                 ),
                                 IconButton(
                                     onPressed: () {
@@ -150,7 +154,7 @@ class _OffersWidgetState extends State<OffersWidget> {
                           Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Text(
-                              "termBody".tr,
+                              widget.disc,
                               style: TextStyle(fontSize: 12.sp),
                             ),
                           ),

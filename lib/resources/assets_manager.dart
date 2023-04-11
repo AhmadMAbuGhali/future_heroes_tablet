@@ -8,6 +8,7 @@ class ImageAssets {
   static const String Gymnastics = '$IMAGE_PATH/Gymnastics.svg';
   static const String karate = '$IMAGE_PATH/karate.svg';
   static const String review = '$IMAGE_PATH/review.svg';
+  static const String No_connection = '$IMAGE_PATH/No_connection.svg';
   static const String reviews = '$IMAGE_PATH/reviews.svg';
   static const String Taekwondo = '$IMAGE_PATH/Taekwondo.svg';
   static const String sketching = '$IMAGE_PATH/sketching.svg';
