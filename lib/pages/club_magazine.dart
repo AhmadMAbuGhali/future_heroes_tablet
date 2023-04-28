@@ -128,38 +128,43 @@ class _ClubMagazineState extends State<ClubMagazine> {
                       child: TabBarView(
                     children: [
                       // انجازات النادي
-                      Container(
-                        child: SingleChildScrollView(
-                          child: Center(
-                              child: Column(
-                            children: [
-                              Achievements(),
-                              Achievements(),
-                              Achievements(),
-                              Achievements(),
-                              Achievements(),
-                              Achievements(),
-                            ],
-                          )),
-                        ),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height*0.6,
+                        child: ListView.builder(
+                            scrollDirection: Axis.vertical,
+                            itemCount: provider.achievement.length,
+                            itemBuilder: (context, index) {
+                              return Column(
+                                children: [
+                                  PlansWidget(
+                                    title: provider.achievement[index].name!,
+                                    disc: provider.achievement[index].description!,
+                                    image: provider.achievement[index].imageString,
+                                  ),
+                                  SizedBox(height: 20.h,)
+                                ],
+                              );
+                            }),
                       ),
                       // الخطط المستقبلسية
-                      Container(
-                        child: SingleChildScrollView(
-                          child: Center(
-                              child: Column(
-                            children: [
-                              PlansWidget(),
-                              PlansWidget(),
-                              PlansWidget(),
-                              PlansWidget(),
-                              PlansWidget(),
-                              PlansWidget(),
-                            ],
-                          )),
-                        ),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height*0.6,
+                        child: ListView.builder(
+                            scrollDirection: Axis.vertical,
+                            itemCount: provider.plans.length,
+                            itemBuilder: (context, index) {
+                              return Column(
+                                children: [
+                                  PlansWidget(
+                                      title: provider.plans[index].name!,
+                                      disc: provider.plans[index].description!,
+                                    image: provider.plans[index].imageString,
+                                  ),
+                                  SizedBox(height: 20.h,)
+                                ],
+                              );
+                            }),
                       ),
-
                       SizedBox(
                         height: MediaQuery.of(context).size.height*0.6,
                         child: ListView.builder(

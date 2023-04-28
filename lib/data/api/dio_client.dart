@@ -3,7 +3,9 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
+import 'package:future_heroes_tablet/models/contact_us_model.dart';
 import 'package:future_heroes_tablet/models/offer_model.dart';
+import 'package:future_heroes_tablet/models/plans_models.dart';
 import 'package:future_heroes_tablet/models/sub_category_model.dart';
 
 import '../../main.dart';
@@ -46,6 +48,46 @@ class DioClient {
         (response.data as List).map((e) => OffersModel.fromJson(e)).toList();
 
     return offerList;
+  }
+
+  Future<List<Plans>> getPlans() async {
+
+    Response response = await dio!.get(ApiConstant.upComing,
+        options: Options(
+          headers: {"Accept-Language": shaedpref.getString("curruntLang")},
+        ));
+    List<Plans> plans = [];
+    plans =
+        (response.data as List).map((e) => Plans.fromJson(e)).toList();
+
+    return plans;
+  }
+
+  Future<List<Plans>> getAchievement() async {
+
+    Response response = await dio!.get(ApiConstant.achievement,
+        options: Options(
+          headers: {"Accept-Language": shaedpref.getString("curruntLang")},
+        ));
+    List<Plans> achievement = [];
+    achievement =
+        (response.data as List).map((e) => Plans.fromJson(e)).toList();
+
+    return achievement;
+  }
+
+
+  Future<List<ContactUs>> getContactUs() async {
+
+    Response response = await dio!.get(ApiConstant.contactsUs,
+        options: Options(
+          headers: {"Accept-Language": shaedpref.getString("curruntLang")},
+        ));
+    List<ContactUs> contactUs = [];
+    contactUs =
+        (response.data as List).map((e) => ContactUs.fromJson(e)).toList();
+
+    return contactUs;
   }
 
   // term

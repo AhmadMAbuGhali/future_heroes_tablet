@@ -4,11 +4,16 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:future_heroes_tablet/resources/assets_manager.dart';
 import 'package:get/get.dart';
 
+import '../data/api/apiconst.dart';
 import '../resources/color_manager.dart';
 import '../resources/styles_manager.dart';
 
 class Achievements extends StatefulWidget {
-  Achievements({Key? key}) : super(key: key);
+  String title;
+  String disc;
+  String? image;
+
+  Achievements({Key? key, required this.title, required this.disc, this.image});
 
   @override
   State<Achievements> createState() => _AchievementsState();
@@ -42,11 +47,14 @@ class _AchievementsState extends State<Achievements> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Image.asset(
-                            ImageAssets.articl,
-                            // height: 200.h,
-                            // width: 200.w,
-                          ),
+                          widget.image == ""
+                              ? Image.asset(
+                                  ImageAssets.logopng,
+                                  // height: 200.h,
+                                  // width: 200.w,
+                                )
+                              : Image.network(
+                                  ApiConstant.imageURL + widget.image!)
                         ],
                       ),
                     ),
@@ -60,7 +68,7 @@ class _AchievementsState extends State<Achievements> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  'Clubachievements'.tr,
+                                  widget.title,
                                   style: getBoldStyle(
                                       color: ColorManager.primary,
                                       fontSize: 14.sp),
@@ -78,7 +86,7 @@ class _AchievementsState extends State<Achievements> {
                           Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Text(
-                              "termBody".tr,
+                              widget.disc,
                               softWrap: true,
                               maxLines: 5,
                               overflow: TextOverflow.ellipsis,
@@ -113,11 +121,14 @@ class _AchievementsState extends State<Achievements> {
                       flex: 1,
                       child: Column(
                         children: [
-                          Image.asset(
-                            ImageAssets.articl,
-                            // height: 200.h,
-                            // width: 150.w,
-                          ),
+                          widget.image == ""
+                              ? Image.asset(
+                                  ImageAssets.logopng,
+                                  // height: 200.h,
+                                  // width: 200.w,
+                                )
+                              : Image.network(
+                                  ApiConstant.imageURL + widget.image!)
                         ],
                       ),
                     ),
@@ -132,7 +143,7 @@ class _AchievementsState extends State<Achievements> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  'Clubachievements'.tr,
+                                  widget.title,
                                   style: getBoldStyle(
                                       color: ColorManager.primary,
                                       fontSize: 14.sp),
@@ -150,7 +161,7 @@ class _AchievementsState extends State<Achievements> {
                           Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Text(
-                              "termBody".tr,
+                              widget.disc,
                               style: TextStyle(fontSize: 12.sp),
                             ),
                           ),

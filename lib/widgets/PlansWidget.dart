@@ -1,6 +1,7 @@
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:future_heroes_tablet/data/api/apiconst.dart';
 import 'package:future_heroes_tablet/resources/assets_manager.dart';
 import 'package:get/get.dart';
 
@@ -8,13 +9,21 @@ import '../resources/color_manager.dart';
 import '../resources/styles_manager.dart';
 
 class PlansWidget extends StatefulWidget {
-  PlansWidget({Key? key}) : super(key: key);
+
+  String title;
+  String disc;
+  String? image;
+
+  PlansWidget({Key? key,
+   required this.title,required this.disc,this.image}) ;
+
 
   @override
   State<PlansWidget> createState() => _PlansWidgetsState();
 }
 
 class _PlansWidgetsState extends State<PlansWidget> {
+
   bool isExpanded = true;
 
   @override
@@ -42,11 +51,11 @@ class _PlansWidgetsState extends State<PlansWidget> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Image.asset(
+                         widget.image==""? Image.asset(
                             ImageAssets.logopng,
                             // height: 200.h,
                             // width: 200.w,
-                          ),
+                          ):Image.network(ApiConstant.imageURL+widget.image!)
                         ],
                       ),
                     ),
@@ -60,7 +69,7 @@ class _PlansWidgetsState extends State<PlansWidget> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  'futureplans'.tr,
+                                 widget.title,
                                   style: getBoldStyle(
                                       color: ColorManager.primary,
                                       fontSize: 14.sp),
@@ -78,7 +87,7 @@ class _PlansWidgetsState extends State<PlansWidget> {
                           Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Text(
-                              "termBody".tr,
+                              widget.disc,
                               softWrap: true,
                               maxLines: 5,
                               overflow: TextOverflow.ellipsis,
@@ -113,11 +122,12 @@ class _PlansWidgetsState extends State<PlansWidget> {
                       flex: 1,
                       child: Column(
                         children: [
-                          Image.asset(
+                          widget.image==""? Image.asset(
                             ImageAssets.logopng,
                             // height: 200.h,
-                            // width: 150.w,
-                          ),
+                            // width: 200.w,
+                          ):Image.network(ApiConstant.imageURL+widget.image!)
+
                         ],
                       ),
                     ),
@@ -132,7 +142,7 @@ class _PlansWidgetsState extends State<PlansWidget> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  'futureplans'.tr,
+                                  widget.title,
                                   style: getBoldStyle(
                                       color: ColorManager.primary,
                                       fontSize: 14.sp),
@@ -150,7 +160,7 @@ class _PlansWidgetsState extends State<PlansWidget> {
                           Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Text(
-                              "termBody".tr,
+                              widget.disc,
                               style: TextStyle(fontSize: 12.sp),
                             ),
                           ),
