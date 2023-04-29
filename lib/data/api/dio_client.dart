@@ -3,7 +3,9 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
+import 'package:future_heroes_tablet/models/coach_standard_model.dart';
 import 'package:future_heroes_tablet/models/contact_us_model.dart';
+import 'package:future_heroes_tablet/models/gym_standard_model.dart';
 import 'package:future_heroes_tablet/models/offer_model.dart';
 import 'package:future_heroes_tablet/models/plans_models.dart';
 import 'package:future_heroes_tablet/models/sub_category_model.dart';
@@ -90,6 +92,37 @@ class DioClient {
     return contactUs;
   }
 
+
+  Future<List<GymStandardModel>> getGymStandard() async {
+    Response response = await dio!.get(ApiConstant.gymStandard,
+        options: Options(
+          headers: {
+            "Accept-Language": shaedpref.getString("curruntLang"),
+
+          },
+        ));
+    List<GymStandardModel> gymStandard = [];
+    gymStandard = (response.data as List)
+        .map((e) => GymStandardModel.fromJson(e))
+        .toList();
+    return gymStandard;
+  }
+
+
+  Future<List<CoachStandardModel>> getCoachStandard() async {
+    Response response = await dio!.get(ApiConstant.coachStandard,
+        options: Options(
+          headers: {
+            "Accept-Language": shaedpref.getString("curruntLang"),
+
+          },
+        ));
+    List<CoachStandardModel> coachStandard = [];
+    coachStandard = (response.data as List)
+        .map((e) => CoachStandardModel.fromJson(e))
+        .toList();
+    return coachStandard;
+  }
   // term
   // Future<TermsAndConditionsModel> termsAndConditions() async {
   //   Response response = await dio!.get(ApiConstant.termsAndConditions,

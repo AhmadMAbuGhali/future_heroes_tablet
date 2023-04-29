@@ -1,3 +1,4 @@
+import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_offline/flutter_offline.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -12,7 +13,9 @@ import 'package:future_heroes_tablet/widgets/CustomButtonPrimary.dart';
 import 'package:future_heroes_tablet/widgets/CustomTextTitle.dart';
 import 'package:future_heroes_tablet/widgets/plusAndMin.dart';
 import 'package:get/get.dart';
+import 'package:provider/provider.dart';
 
+import '../services/app_provider.dart';
 import 'NoConnection.dart';
 
 class CoachEvaluation extends StatefulWidget {
@@ -32,7 +35,8 @@ class _CoachEvaluationState extends State<CoachEvaluation> {
   ];
   @override
   Widget build(BuildContext context) {
-    return OfflineBuilder(
+    return Consumer<AppProvider>(builder: (context, provider, x) {
+      return OfflineBuilder(
       child: Scaffold(
         appBar: AppBar(
             elevation: 10,
@@ -77,7 +81,7 @@ class _CoachEvaluationState extends State<CoachEvaluation> {
                           Text(
                             'choseCoach'.tr,
                             style: TextStyle(
-                                fontSize: 12,
+                                fontSize: 12.sp,
                                 color: ColorManager.primary,
                                 fontWeight: FontWeight.bold),
                           ),
@@ -86,37 +90,291 @@ class _CoachEvaluationState extends State<CoachEvaluation> {
                           ),
                           Container(
                             width: 128.w,
-                            child: DropdownButton(
-                              value: dropdownvalue,
-                              icon: const Icon(Icons.keyboard_arrow_down),
-                              items: items.map((String items) {
-                                return DropdownMenuItem(
-                                  value: items,
-                                  child: Text(
-                                    items,
-                                    style: TextStyle(
-                                        fontSize: 12.sp,
-                                        color: ColorManager.primary,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                );
-                              }).toList(),
-                              onChanged: (String? newValue) {
-                                setState(() {
-                                  dropdownvalue = newValue!;
-                                });
+                            height: 35.h,
+                            child: DropdownButtonFormField2(
+                              decoration: InputDecoration(
+                                isDense: true,
+                                contentPadding: EdgeInsets.zero,
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(12.r),
+                                ),
+                              ),
+                              isExpanded: true,
+                              itemHeight: 30,
+                              icon: const Icon(
+                                Icons.arrow_drop_down,
+                                color: ColorManager.primary,
+                              ),
+                              iconSize: 30.sp,
+                              buttonHeight: 60.h,
+                              buttonPadding:
+                              const EdgeInsets.only(left: 12, right: 12),
+                              dropdownDecoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(12.r),
+                              ),
+                              items:items.map((item) => DropdownMenuItem<String>(
+                                value: item,
+                                child: Text(
+                                  item,
+                                  style: const TextStyle(fontSize: 14),
+                                ),
+                              )).toList() ?? [],
+
+                              // validator: (value) {
+                              //   if (value == null) {
+                              //     return 'يجب تحديد تصنيف المهمة';
+                              //   }
+                              //   return null;
+                              // },
+                              onChanged: (value) {
+
+                                // TaskCategoryItem? h2 = value as TaskCategoryItem?;
+                                // provider.selectedCategoryId = h2!.id!;
                               },
                             ),
+
+
+                          // DropdownButton(
+                          //     value: dropdownvalue,
+                          //     icon: const Icon(Icons.keyboard_arrow_down),
+                          //     items: items.map((String items) {
+                          //       return DropdownMenuItem(
+                          //         value: items,
+                          //         child: Text(
+                          //           items,
+                          //           style: TextStyle(
+                          //               fontSize: 12.sp,
+                          //               color: ColorManager.primary,
+                          //               fontWeight: FontWeight.bold),
+                          //         ),
+                          //       );
+                          //     }).toList(),
+                          //     onChanged: (String? newValue) {
+                          //       setState(() {
+                          //         dropdownvalue = newValue!;
+                          //       });
+                          //     },
+                          //   ),
                           )
                         ],
                       ),
-                      PlusWidget(title: 'Thestandard'.tr),
-                      PlusWidget(title: 'Thestandard'.tr),
-                      PlusWidget(title: 'Thestandard'.tr),
-                      PlusWidget(title: 'Thestandard'.tr),
-                      PlusWidget(title: 'Thestandard'.tr),
-                      PlusWidget(title: 'Thestandard'.tr),
-                      PlusWidget(title: 'Thestandard'.tr),
+                      SizedBox(
+                          height: 350.h,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Container(
+                                padding:
+                                EdgeInsets.symmetric(horizontal: 12.w),
+                                child: Row(
+                                  mainAxisAlignment:
+                                  MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      provider.coachStandard[0].name!,
+                                      style: TextStyle(
+                                          fontSize: 12.sp,
+                                          color: ColorManager.primary,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                      MainAxisAlignment.center,
+                                      children: [
+                                        IconButton(
+                                          icon: Icon(Icons.remove),
+                                          onPressed: () {
+                                            final newValue =
+                                                provider.currentIntValueCoach1 - 1;
+                                            provider.setcurrentIntValue1(
+                                                newValue.clamp(0, 5));
+                                          },
+                                        ),
+                                        Text('${provider.currentIntValueCoach1}'),
+                                        IconButton(
+                                          icon: Icon(Icons.add),
+                                          onPressed: () {
+                                            final newValue =
+                                                provider.currentIntValueCoach1 + 1;
+                                            provider.setcurrentIntValue1(
+                                                newValue.clamp(0, 5));
+                                          },
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Container(
+                                padding:
+                                EdgeInsets.symmetric(horizontal: 12.w),
+                                child: Row(
+                                  mainAxisAlignment:
+                                  MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      provider.coachStandard[1].name!,
+                                      style: TextStyle(
+                                          fontSize: 12.sp,
+                                          color: ColorManager.primary,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                      MainAxisAlignment.center,
+                                      children: [
+                                        IconButton(
+                                          icon: Icon(Icons.remove),
+                                          onPressed: () {
+                                            final newValue =
+                                                provider.currentIntValueCoach2 - 1;
+                                            provider.setcurrentIntValue2(
+                                                newValue.clamp(0, 5));
+                                          },
+                                        ),
+                                        Text('${provider.currentIntValueCoach2}'),
+                                        IconButton(
+                                          icon: Icon(Icons.add),
+                                          onPressed: () {
+                                            final newValue =
+                                                provider.currentIntValueCoach2 + 1;
+                                            provider.setcurrentIntValue2(
+                                                newValue.clamp(0, 5));
+                                          },
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Container(
+                                padding:
+                                EdgeInsets.symmetric(horizontal: 12.w),
+                                child: Row(
+                                  mainAxisAlignment:
+                                  MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      provider.coachStandard[2].name!,
+                                      style: TextStyle(
+                                          fontSize: 12.sp,
+                                          color: ColorManager.primary,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                      MainAxisAlignment.center,
+                                      children: [
+                                        IconButton(
+                                          icon: Icon(Icons.remove),
+                                          onPressed: () {
+                                            final newValue =
+                                                provider.currentIntValueCoach3 - 1;
+                                            provider.setcurrentIntValue3(
+                                                newValue.clamp(0, 5));
+                                          },
+                                        ),
+                                        Text('${provider.currentIntValueCoach3}'),
+                                        IconButton(
+                                          icon: Icon(Icons.add),
+                                          onPressed: () {
+                                            final newValue =
+                                                provider.currentIntValueCoach3 + 1;
+                                            provider.setcurrentIntValue3(
+                                                newValue.clamp(0, 5));
+                                          },
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Container(
+                                padding:
+                                EdgeInsets.symmetric(horizontal: 12.w),
+                                child: Row(
+                                  mainAxisAlignment:
+                                  MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      provider.coachStandard[3].name!,
+                                      style: TextStyle(
+                                          fontSize: 12.sp,
+                                          color: ColorManager.primary,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                      MainAxisAlignment.center,
+                                      children: [
+                                        IconButton(
+                                          icon: Icon(Icons.remove),
+                                          onPressed: () {
+                                            final newValue =
+                                                provider.currentIntValueCoach4 - 1;
+                                            provider.setcurrentIntValue4(
+                                                newValue.clamp(0, 5));
+                                          },
+                                        ),
+                                        Text('${provider.currentIntValueCoach4}'),
+                                        IconButton(
+                                          icon: Icon(Icons.add),
+                                          onPressed: () {
+                                            final newValue =
+                                                provider.currentIntValueCoach4 + 1;
+                                            provider.setcurrentIntValue4(
+                                                newValue.clamp(0, 5));
+                                          },
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Container(
+                                padding:
+                                EdgeInsets.symmetric(horizontal: 12.w),
+                                child: Row(
+                                  mainAxisAlignment:
+                                  MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      provider.coachStandard[4].name!,
+                                      style: TextStyle(
+                                          fontSize: 12.sp,
+                                          color: ColorManager.primary,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                      MainAxisAlignment.center,
+                                      children: [
+                                        IconButton(
+                                          icon: Icon(Icons.remove),
+                                          onPressed: () {
+                                            final newValue =
+                                                provider.currentIntValueCoach5 - 1;
+                                            provider.setcurrentIntValue5(
+                                                newValue.clamp(0, 5));
+                                          },
+                                        ),
+                                        Text('${provider.currentIntValueCoach5}'),
+                                        IconButton(
+                                          icon: Icon(Icons.add),
+                                          onPressed: () {
+                                            final newValue =
+                                                provider.currentIntValueCoach5 + 1;
+                                            provider.setcurrentIntValue5(
+                                                newValue.clamp(0, 5));
+                                          },
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          )),
                       Column(
                         //   mainAxisAlignment: MainAxisAlignment.start,
                         children: [
@@ -197,6 +455,6 @@ class _CoachEvaluationState extends State<CoachEvaluation> {
 
 
       },
-    );
+    );});
   }
 }
