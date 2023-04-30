@@ -64,7 +64,7 @@ class HomePage extends StatelessWidget {
                 SizedBox(
                   height: 16.h,
                 ),
-                Text('termBody'.tr),
+                Text(provider.bio[0].title!),
 
                 // Text(
                 //   'termBody'.tr,
@@ -89,11 +89,10 @@ class HomePage extends StatelessWidget {
                 SizedBox(
                   height: 16.h,
                 ),
-                Text('termBody'.tr),
+                Text(provider.bio[0].titleTwo!),
                 SizedBox(
                   height: 16.h,
                 ),
-                CustomButtonPrimary(text: 'ShowMore'.tr, onpressed: () {}),
                 SizedBox(
                   height: 50.h,
                 ),

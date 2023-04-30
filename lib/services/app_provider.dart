@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:future_heroes_tablet/models/bio_model.dart';
 import 'package:future_heroes_tablet/models/coach_standard_model.dart';
 import 'package:future_heroes_tablet/models/contact_us_model.dart';
 import 'package:future_heroes_tablet/models/contact_us_model.dart';
@@ -29,6 +30,7 @@ getAchievement();
 getContactUs();
 getStandardRate();
 getStandardCoach();
+getBio();
   }
 
   // int? _idPostpone;
@@ -272,6 +274,24 @@ List<Plans> plans = [];
   Future<CoachStandardModel?> getStandardCoach() async {
     try {
       coachStandard = await DioClient.dioClient.getCoachStandard();
+    } on DioError catch (e) {
+      String massage = DioException.fromDioError(e).toString();
+      final snackBar = SnackBar(
+        content: SizedBox(height: 32.h, child: Center(child: Text(massage))),
+        backgroundColor: ColorManager.red,
+        behavior: SnackBarBehavior.floating,
+        width: 300.w,
+        duration: const Duration(seconds: 1),
+      );
+    }
+    notifyListeners();
+  }
+
+  List<BioModel> bio = [];
+
+  Future<BioModel?> getBio() async {
+    try {
+      bio = await DioClient.dioClient.getBio();
     } on DioError catch (e) {
       String massage = DioException.fromDioError(e).toString();
       final snackBar = SnackBar(

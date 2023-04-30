@@ -3,6 +3,7 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
+import 'package:future_heroes_tablet/models/bio_model.dart';
 import 'package:future_heroes_tablet/models/coach_standard_model.dart';
 import 'package:future_heroes_tablet/models/contact_us_model.dart';
 import 'package:future_heroes_tablet/models/gym_standard_model.dart';
@@ -123,6 +124,23 @@ class DioClient {
         .toList();
     return coachStandard;
   }
+
+  Future<List<BioModel>> getBio() async {
+    Response response = await dio!.get(ApiConstant.bio,
+        options: Options(
+          headers: {
+            "Accept-Language": shaedpref.getString("curruntLang"),
+
+          },
+        ));
+    List<BioModel> bio = [];
+    bio = (response.data as List)
+        .map((e) => BioModel.fromJson(e))
+        .toList();
+    return bio;
+  }
+
+
   // term
   // Future<TermsAndConditionsModel> termsAndConditions() async {
   //   Response response = await dio!.get(ApiConstant.termsAndConditions,
