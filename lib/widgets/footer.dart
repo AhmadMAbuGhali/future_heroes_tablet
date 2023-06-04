@@ -102,15 +102,10 @@ class _FooterWidgetState extends State<FooterWidget> {
 
                                   },
                                   icon: Icon(
-                                    MyFlutterApp.facebook_squared,
+                                    MyFlutterApp.snapchat_ghost,
                                     color: ColorManager.white,
                                   )),
-                              IconButton(
-                                  onPressed: () {},
-                                  icon: Icon(
-                                    MyFlutterApp.whatsapp,
-                                    color: ColorManager.white,
-                                  )),
+
                               IconButton(
                                   onPressed: () async {
 
@@ -121,12 +116,7 @@ class _FooterWidgetState extends State<FooterWidget> {
                                     MyFlutterApp.twitter,
                                     color: ColorManager.white,
                                   )),
-                              IconButton(
-                                  onPressed: () {},
-                                  icon: Icon(
-                                    MyFlutterApp.snapchat_ghost,
-                                    color: ColorManager.white,
-                                  )),
+
                             ],
                           )
                         ],

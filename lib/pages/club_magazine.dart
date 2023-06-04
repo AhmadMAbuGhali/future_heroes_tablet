@@ -36,7 +36,7 @@ class _ClubMagazineState extends State<ClubMagazine> {
                 elevation: 10,
                 title: Text(
                   'FUTURE HEROES',
-                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.bold),
                 ),
                 centerTitle: true,
                 backgroundColor: ColorManager.primary,
@@ -63,7 +63,7 @@ class _ClubMagazineState extends State<ClubMagazine> {
                   Text(
                     'Feedback2'.tr,
                     style: TextStyle(
-                        color: ColorManager.gray, fontSize: FontSize.s12),
+                        color: ColorManager.gray, fontSize: FontSize.s12.sp),
                   ),
                   SizedBox(
                       height: 30.h,

@@ -6,6 +6,8 @@ import 'package:future_heroes_tablet/routes/route_helper.dart';
 import 'package:future_heroes_tablet/widgets/LogoAuth.dart';
 import 'package:get/get.dart';
 
+import '../services/app_provider.dart';
+
 class DrowerWidget extends StatelessWidget {
   const DrowerWidget({super.key});
 
@@ -26,28 +28,41 @@ class DrowerWidget extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.home),
             title: Text('home'.tr),
-            onTap: () {
+            onTap: () async{
+              await  AppProvider().getBio();
+              await  AppProvider().getContactUs();  await  AppProvider().getStandardRate();
               Get.toNamed(RouteHelper.homePage);
             },
           ),
           ListTile(
             leading: Icon(Icons.menu_book),
             title: Text('CenterMagazine'.tr),
-            onTap: () {
+            onTap: () async{
+
+              await  AppProvider().getAchievement();
+              await  AppProvider().getPlans();
+              await  AppProvider().getOffers();
+
               Get.toNamed(RouteHelper.clubMagazine);
             },
           ),
           ListTile(
             leading: Icon(Icons.star),
             title: Text('CoachEvaluation'.tr),
-            onTap: () {
+            onTap: () async{
+              await  AppProvider().getCoach();
+
+              await  AppProvider().getStandardCoach();
               Get.toNamed(RouteHelper.coachEvaluation);
             },
           ),
           ListTile(
             leading: Icon(MyFlutterApp.thumbs_up),
             title: Text('Centerevaluation'.tr),
-            onTap: () {
+            onTap: () async{
+
+
+              await  AppProvider().getStandardRate();
               Get.toNamed(RouteHelper.centerEvaluation);
             },
           ),
@@ -55,6 +70,7 @@ class DrowerWidget extends StatelessWidget {
             leading: Icon(Icons.feedback),
             title: Text('Feedback'.tr),
             onTap: () {
+
               Get.toNamed(RouteHelper.feedBack);
             },
           ),
@@ -62,6 +78,7 @@ class DrowerWidget extends StatelessWidget {
             leading: Icon(Icons.language),
             title: Text('changeDisplayLang'.tr),
             onTap: () {
+
               Get.toNamed(RouteHelper.language);
             },
           ),

@@ -29,7 +29,7 @@ class FeedBack extends StatelessWidget {
             elevation: 10,
             title: Text(
               'FUTURE HEROES',
-              style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.bold),
             ),
             centerTitle: true,
             backgroundColor: ColorManager.primary,
@@ -47,11 +47,16 @@ class FeedBack extends StatelessWidget {
             child: Center(
               child: Column(
                 children: [
+                  SizedBox(height: 30.h,),
                   Container(
                       height: 128.h,
                       width: 128.w,
                       child: SvgPicture.asset(ImageAssets.feedback)),
+                  SizedBox(height: 10.h,),
+
                   CustomTextTitle(text: 'Feedback'.tr),
+                  SizedBox(height: 10.h,),
+
                   Text(
                     'Feedback2'.tr,
                     style: TextStyle(
@@ -70,7 +75,7 @@ class FeedBack extends StatelessWidget {
                               Text(
                                 'Title'.tr,
                                 style: TextStyle(
-                                  fontSize: 12,
+                                  fontSize: 12.sp,
                                   color: ColorManager.primary,
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -94,7 +99,7 @@ class FeedBack extends StatelessWidget {
                             children: [
                               Text('topic'.tr,
                                   style: TextStyle(
-                                    fontSize: 12,
+                                    fontSize: 12.sp,
                                     color: ColorManager.primary,
                                     fontWeight: FontWeight.bold,
                                   )),
@@ -111,7 +116,7 @@ class FeedBack extends StatelessWidget {
                               hintText: 'Feedback2'.tr,
                               hintStyle: getRegularStyle(
                                   color: ColorManager.otpDesc,
-                                  fontSize: FontSize.s12),
+                                  fontSize: FontSize.s12.sp),
                               border: OutlineInputBorder(
                                   borderSide: BorderSide(
                                     color: ColorManager.gray,

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_offline/flutter_offline.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:future_heroes_tablet/data/api/apiconst.dart';
+import 'package:future_heroes_tablet/models/bio_model.dart';
 import 'package:future_heroes_tablet/pages/drower.dart';
 
 import 'package:future_heroes_tablet/resources/assets_manager.dart';
@@ -28,14 +30,22 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Consumer<AppProvider>(builder: (context, provider, x) {
+
+      if (provider.bio.isEmpty) {
+        // Handle the case when provider.bio is empty
+        return CircularProgressIndicator(); // Replace with an appropriate loading indicator or error message
+      }
+
+      final BioModel bio = provider.bio.first;
       return OfflineBuilder(
       child: Scaffold(
         appBar: AppBar(
             elevation: 10,
             title: Text(
               'FUTURE HEROES',
-              style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.bold),
             ),
             centerTitle: true,
             backgroundColor: ColorManager.primary,
@@ -58,13 +68,32 @@ class HomePage extends StatelessWidget {
                   style: TextStyle(
                       color: ColorManager.primary,
                       fontWeight: FontWeight.bold,
-                      fontSize: 16),
+                      fontSize: 16.sp),
                 ),
                 //  CustomTextTitle(text: 'اهلا وسهلا بك عزيزي  الزائر'),
                 SizedBox(
                   height: 16.h,
                 ),
-                Text(provider.bio[0].title!),
+                FutureBuilder<BioModel?>(
+                  future: provider.getBio(),
+                  builder: (BuildContext context, AsyncSnapshot<BioModel?> snapshot) {
+                    if (snapshot.connectionState == ConnectionState.done) {
+                      if (snapshot.hasData) {
+                        return Html(
+                          data: snapshot.data!.title,
+                        );
+                      } else if (snapshot.hasError) {
+                        return Text('Error: ${snapshot.error}');
+                      } else {
+                        // Return null when there is no data or error to stop displaying the CircularProgressIndicator
+                        return Container();
+                      }
+                    }
+                    return CircularProgressIndicator();
+                  },
+                ),
+
+
 
                 // Text(
                 //   'termBody'.tr,
@@ -78,18 +107,37 @@ class HomePage extends StatelessWidget {
                   style: TextStyle(
                       color: ColorManager.black,
                       fontWeight: FontWeight.bold,
-                      fontSize: 16),
+                      fontSize: 16.sp),
                 ),
                 //  CustomTextTitle(text: 'من نحن'),
                 LogoAuth(),
                 Text(
                   'WhoWeAre2'.tr,
-                  style: TextStyle(color: ColorManager.gray, fontSize: 14),
+                  style: TextStyle(color: ColorManager.gray, fontSize: 14.sp),
                 ),
                 SizedBox(
                   height: 16.h,
                 ),
-                Text(provider.bio[0].titleTwo!),
+                Center(
+                  child: FutureBuilder<BioModel?>(
+                    future: provider.getBio(),
+                    builder: (BuildContext context, AsyncSnapshot<BioModel?> snapshot) {
+                      if (snapshot.connectionState == ConnectionState.done) {
+                        if (snapshot.hasData) {
+                          return Html(
+                            data: snapshot.data!.titleTwo,
+                          );
+                        } else if (snapshot.hasError) {
+                          return Text('Error: ${snapshot.error}');
+                        } else {
+                          // Return null when there is no data or error to stop displaying the CircularProgressIndicator
+                          return Container();
+                        }
+                      }
+                      return CircularProgressIndicator();
+                    },
+                  ),
+                ),
                 SizedBox(
                   height: 16.h,
                 ),
@@ -101,14 +149,14 @@ class HomePage extends StatelessWidget {
                   style: TextStyle(
                       color: ColorManager.black,
                       fontWeight: FontWeight.bold,
-                      fontSize: 16),
+                      fontSize: 16.sp),
                 ),
                 SizedBox(
                   height: 16.h,
                 ),
                 Text(
                   'OurServices2'.tr,
-                  style: TextStyle(color: ColorManager.gray, fontSize: 12),
+                  style: TextStyle(color: ColorManager.gray, fontSize: 12.sp),
                 ),
                 SizedBox(
                   height: 20.h,
@@ -118,66 +166,24 @@ class HomePage extends StatelessWidget {
                   height: 300.h,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
-                      itemCount: provider.subCategoryList.length,
-                      itemBuilder: (context,index){
-
-                    return Row(
-                      children: [
-                        ShortCutWidget2(
-                          text: provider.subCategoryList[index].name!,
-                          img: ApiConstant.imageURL+provider.subCategoryList[index].imageString!,
-                        ),
-                        SizedBox(width: 20.w,)
-                      ],
-                    );
-                  }),
+                    itemCount: provider.subCategoryList.length,
+                    itemBuilder: (context, index) {
+                      return Row(
+                        children: [
+                          ShortCutWidget2(
+                            text: provider.subCategoryList[index].name!,
+                            img: ApiConstant.imageURL +
+                                provider.subCategoryList[index].imageString!,
+                          ),
+                          SizedBox(
+                            width: 20.w,
+                          )
+                        ],
+                      );
+                    },
+                  ),
                 ),
-                // SingleChildScrollView(
-                //   scrollDirection: Axis.horizontal,
-                //   child: Row(
-                //     children: [
-                //       ShortCutWidget2(
-                //         text: 'Sculpture'.tr,
-                //         img: ImageAssets.sculpting,
-                //       ),
-                //       SizedBox(
-                //         width: 40.w,
-                //       ),
-                //       ShortCutWidget2(
-                //         text: 'drawing'.tr,
-                //         img: ImageAssets.sketching,
-                //       ),
-                //       SizedBox(
-                //         width: 40.w,
-                //       ),
-                //       ShortCutWidget2(
-                //         text: 'font'.tr,
-                //         img: ImageAssets.reading,
-                //       ),
-                //       SizedBox(
-                //         width: 40.w,
-                //       ),
-                //       ShortCutWidget2(
-                //         text: 'Gymnastics'.tr,
-                //         img: ImageAssets.Gymnastics,
-                //       ),
-                //       SizedBox(
-                //         width: 40.w,
-                //       ),
-                //       ShortCutWidget2(
-                //         text: 'Karate'.tr,
-                //         img: ImageAssets.karate,
-                //       ),
-                //       SizedBox(
-                //         width: 40.w,
-                //       ),
-                //       ShortCutWidget2(
-                //         text: 'taekwondo'.tr,
-                //         img: ImageAssets.Taekwondo,
-                //       ),
-                //     ],
-                //   ),
-                // ),
+
                 SizedBox(
                   height: 30.h,
                 ),

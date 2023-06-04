@@ -26,7 +26,7 @@ class Language extends StatelessWidget {
             elevation: 10,
             title: Text(
               'FUTURE HEROES',
-              style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.bold),
             ),
             centerTitle: true,
             backgroundColor: ColorManager.primary,

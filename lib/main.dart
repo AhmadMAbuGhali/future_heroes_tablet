@@ -54,7 +54,7 @@ class MyApp extends StatelessWidget {
               fontFamily: 'Tajawal',
               primaryColor: Color(0xFF8A57DC),
             ),
-            initialRoute: RouteHelper.homePage,
+            initialRoute: RouteHelper.splash,
             getPages: RouteHelper.routes,
           );
         });

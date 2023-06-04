@@ -4,6 +4,7 @@ import 'package:future_heroes_tablet/pages/club_magazine.dart';
 import 'package:future_heroes_tablet/pages/feedback.dart';
 import 'package:future_heroes_tablet/pages/homepage.dart';
 import 'package:future_heroes_tablet/pages/language.dart';
+import 'package:future_heroes_tablet/pages/splash_page/splash_page.dart';
 import 'package:get/get.dart';
 
 class RouteHelper {
@@ -13,6 +14,7 @@ class RouteHelper {
   static const String feedBack = "/feedBack";
   static const String clubMagazine = "/clubMagazine";
   static const String language = "/language";
+  static const String splash = "/splah";
 
   static String getHomePage() => '$homePage';
   static String getCoachEvaluation() => '$coachEvaluation';
@@ -20,12 +22,19 @@ class RouteHelper {
   static String getFeedBack() => '$feedBack';
   static String getClubMagazine() => '$clubMagazine';
   static String getLanguage() => '$language';
+  static String getSplash() => '$splash';
 
   static List<GetPage> routes = [
     GetPage(
       name: homePage,
       page: () {
         return HomePage();
+      },
+    ),
+    GetPage(
+      name: splash,
+      page: () {
+        return SplashScreen();
       },
     ),
     GetPage(

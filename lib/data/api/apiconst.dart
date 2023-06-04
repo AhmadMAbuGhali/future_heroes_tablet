@@ -1,6 +1,6 @@
 
 class ApiConstant {
-  static const  String baseUrl ='https://yousef.azurewebsites.net/api/' ;
+  static const String baseUrl ='http://futureheroes-001-site1.gtempurl.com/api/' ;
   static const String getOffers = 'Offer/GetOffers';
   static const String userOrder = 'UserOrder';
   static const String subCategory = 'SubCategory';
@@ -10,7 +10,10 @@ class ApiConstant {
   static const String gymStandard = 'GymStandard';
   static const String coachStandard = 'CoachStandard';
   static const String bio = 'Bio';
-  static const String imageURL = 'https://yousef.azurewebsites.net/images/';
+  static const String serviceEvaluation = 'ServiceEvaluation';
+  static const String coachEvaluation = 'CoachEvaluation';
+  static const String getAllCoaches = 'Authentication/GetAllCoaches';
+  static const String imageURL = 'http://futureheroes-001-site1.gtempurl.com/images/';
 
 
 }

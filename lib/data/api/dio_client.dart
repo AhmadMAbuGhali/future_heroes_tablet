@@ -6,6 +6,7 @@ import 'package:dio/dio.dart';
 import 'package:future_heroes_tablet/models/bio_model.dart';
 import 'package:future_heroes_tablet/models/coach_standard_model.dart';
 import 'package:future_heroes_tablet/models/contact_us_model.dart';
+import 'package:future_heroes_tablet/models/get_coach.dart';
 import 'package:future_heroes_tablet/models/gym_standard_model.dart';
 import 'package:future_heroes_tablet/models/offer_model.dart';
 import 'package:future_heroes_tablet/models/plans_models.dart';
@@ -125,6 +126,22 @@ class DioClient {
     return coachStandard;
   }
 
+  Future<List<GetCoach>> getCoach() async {
+    Response response = await dio!.get(ApiConstant.getAllCoaches,
+        options: Options(
+          headers: {
+            "Accept-Language": shaedpref.getString("curruntLang"),
+
+          },
+        ));
+    List<GetCoach> coachs = [];
+
+    coachs = (response.data as List<dynamic>)
+        .map((e) => GetCoach.fromJson(e))
+        .toList();
+    return coachs;
+  }
+
   Future<List<BioModel>> getBio() async {
     Response response = await dio!.get(ApiConstant.bio,
         options: Options(
@@ -140,33 +157,37 @@ class DioClient {
     return bio;
   }
 
+  Future<void> ServiceEvaluation(
+      List<Map<String, int>> evalutions, String note) async {
+    await dio!.post(ApiConstant.serviceEvaluation,
+        data: {
 
-  // term
-  // Future<TermsAndConditionsModel> termsAndConditions() async {
-  //   Response response = await dio!.get(ApiConstant.termsAndConditions,
-  //       options: Options(
-  //         headers: {"Accept-Language": shaedpref.getString("curruntLang")},
-  //       ));
-  //   TermsAndConditionsModel term =
-  //       TermsAndConditionsModel.fromJson(response.data[0]);
-  //   return term;
-  // }
+          "evalutions": evalutions,
+          "note": note,
+        },
+        options: Options(
+          headers: {
+            "Accept-Language": shaedpref.getString("curruntLang"),
+             },
+        ));
+  }
+  Future<void> CoachEvaluation(
+      List<Map<String, int>> evalutions, String note,String coachId) async {
+    await dio!.post(ApiConstant.coachEvaluation,
+        data: {
+           "coachId": coachId,
+          "evalutions": evalutions,
+          "note": note,
+        },
+        options: Options(
+          headers: {
+            "Accept-Language": shaedpref.getString("curruntLang"),
+             },
+        ));
+  }
 
-//category
 
 
-//Subscription
-//   Future<List<OffersModel>> getOffer() async {
-//     Response response = await dio!.get(ApiConstant.getOffers,
-//         options: Options(
-//           headers: {"Accept-Language": shaedpref.getString("curruntLang")},
-//         ));
-//     List<OffersModel> listOffer = [];
-//     listOffer =
-//         (response.data as List).map((e) => OffersModel.fromJson(e)).toList();
-//
-//     return listOffer;
-//   }
 
 
 }
