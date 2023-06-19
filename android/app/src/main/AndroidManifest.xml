@@ -1,7 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.future.heroes.future_heroes_tablet">
+    <uses-permission android:name="android.permission.INTERNET" />
    <application
-        android:label="future_heroes_tablet"
+        android:label="future heroes tablet"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
